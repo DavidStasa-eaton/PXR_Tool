@@ -210,7 +210,7 @@ namespace PXR_Tool
 
         private void SP_PGF_Load(object sender, EventArgs e)
         {
-            Console.WriteLine("Load");
+            
         }
 
         private async void writeButton_Click(object sender, EventArgs e)

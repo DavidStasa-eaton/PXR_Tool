@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,21 +9,17 @@ namespace PXR_Tool
 {
     static class Program
     {
-        public static string PdPxr25Path = @"S:\Stasa\Scripts\Blueberry\PdPxr25DeviceInfo.txt";
-        public static string TokyoPath = @"S:\Stasa\Scripts\Blueberry\TokyoDeviceInfo.txt";
-        public static string Pxr35Path = @"S:\Stasa\Scripts\Blueberry\Pxr35DeviceInfo.txt";
-
         public static StasaLibrary.DeviceInfo connectedDevice = null;
 
         public static event Action<BroadDeviceChangedEventArgs> DeviceChangedEvent;
-        public static BroadDeviceType currentBDT = BroadDeviceType.None;
+        public static DeviceType currentBDT = DeviceType.None;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            ChangeDeviceType(BroadDeviceType.Tokyo);
+            ChangeDeviceType(DeviceType.Pxr35);
 
 
             Application.EnableVisualStyles();
@@ -30,9 +27,9 @@ namespace PXR_Tool
             Application.Run(new MainForm());
         }
 
-        public static void ChangeDeviceType(BroadDeviceType newType)
+        public static void ChangeDeviceType(DeviceType newType)
         {
-            BroadDeviceType oldType = currentBDT;
+            DeviceType oldType = currentBDT;
             if (newType == currentBDT) // Do nothing if type changes.
                 return;
 
@@ -40,23 +37,20 @@ namespace PXR_Tool
             string parseText;
             switch (newType)
             {
-                case BroadDeviceType.Tokyo:
-                    parseText = System.IO.File.ReadAllText(TokyoPath);
-                    connectedDevice = Newtonsoft.Json.JsonConvert.DeserializeObject<StasaLibrary.TokyoDeviceInfo>(parseText);
+                case DeviceType.Tokyo:
+                    connectedDevice = Newtonsoft.Json.JsonConvert.DeserializeObject<StasaLibrary.TokyoDeviceInfo>(Properties.Resources.TokyoDeviceInfo);
                     break;
-                case BroadDeviceType.PdPxr25:
-                    parseText = System.IO.File.ReadAllText(PdPxr25Path);
-                    connectedDevice = Newtonsoft.Json.JsonConvert.DeserializeObject<StasaLibrary.PdDeviceInfo>(parseText);
+                case DeviceType.PdPxr25:
+                    connectedDevice = Newtonsoft.Json.JsonConvert.DeserializeObject<StasaLibrary.PdDeviceInfo>(Properties.Resources.PdPxr25DeviceInfo);
                     break;
                 default:
-                    parseText = System.IO.File.ReadAllText(Pxr35Path);
-                    connectedDevice = Newtonsoft.Json.JsonConvert.DeserializeObject<StasaLibrary.DeviceInfo>(parseText);
+                    connectedDevice = Newtonsoft.Json.JsonConvert.DeserializeObject<StasaLibrary.Pxr35DeviceInfo>(Properties.Resources.Pxr35DeviceInfo);
                     break;
             }
 
             currentBDT = newType;
 
-            if (oldType == BroadDeviceType.None)
+            if (oldType == DeviceType.None)
                 return;
 
             BroadDeviceChangedEventArgs bdcea = new BroadDeviceChangedEventArgs() { newType = newType, previousType = oldType };
@@ -66,7 +60,7 @@ namespace PXR_Tool
 
     public class BroadDeviceChangedEventArgs : EventArgs
     {
-        public BroadDeviceType previousType { get; set; }
-        public BroadDeviceType newType { get; set; }
+        public DeviceType previousType { get; set; }
+        public DeviceType newType { get; set; }
     }
 }

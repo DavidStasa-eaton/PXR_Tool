@@ -31,10 +31,9 @@ namespace PXR_Tool
         {
             this.rtdTabControl = new System.Windows.Forms.TabControl();
             this.rtdTabPageA = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.rtD_PGF1 = new PXR_Tool.RTD_PGF();
-            this.rtD_PGF2 = new PXR_Tool.RTD_PGF();
             this.rtD_PGF3 = new PXR_Tool.RTD_PGF();
+            this.rtD_PGF2 = new PXR_Tool.RTD_PGF();
+            this.rtD_PGF1 = new PXR_Tool.RTD_PGF();
             this.rtdTabControl.SuspendLayout();
             this.rtdTabPageA.SuspendLayout();
             this.SuspendLayout();
@@ -42,7 +41,6 @@ namespace PXR_Tool
             // rtdTabControl
             // 
             this.rtdTabControl.Controls.Add(this.rtdTabPageA);
-            this.rtdTabControl.Controls.Add(this.tabPage2);
             this.rtdTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtdTabControl.Location = new System.Drawing.Point(0, 0);
             this.rtdTabControl.Name = "rtdTabControl";
@@ -63,23 +61,14 @@ namespace PXR_Tool
             this.rtdTabPageA.TabIndex = 0;
             this.rtdTabPageA.Text = "Groups 0, 1, 10";
             // 
-            // tabPage2
+            // rtD_PGF3
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(723, 473);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // rtD_PGF1
-            // 
-            this.rtD_PGF1.BufferByte = ((byte)(0));
-            this.rtD_PGF1.Location = new System.Drawing.Point(6, 6);
-            this.rtD_PGF1.Name = "rtD_PGF1";
-            this.rtD_PGF1.Size = new System.Drawing.Size(695, 195);
-            this.rtD_PGF1.TabIndex = 0;
+            this.rtD_PGF3.BufferByte = ((byte)(10));
+            this.rtD_PGF3.Location = new System.Drawing.Point(490, 207);
+            this.rtD_PGF3.Name = "rtD_PGF3";
+            this.rtD_PGF3.Size = new System.Drawing.Size(211, 195);
+            this.rtD_PGF3.SubControlLocation = new System.Drawing.Point(3, 48);
+            this.rtD_PGF3.TabIndex = 2;
             // 
             // rtD_PGF2
             // 
@@ -87,15 +76,18 @@ namespace PXR_Tool
             this.rtD_PGF2.Location = new System.Drawing.Point(6, 207);
             this.rtD_PGF2.Name = "rtD_PGF2";
             this.rtD_PGF2.Size = new System.Drawing.Size(211, 195);
+            this.rtD_PGF2.SubControlLocation = new System.Drawing.Point(3, 48);
             this.rtD_PGF2.TabIndex = 1;
             // 
-            // rtD_PGF3
+            // rtD_PGF1
             // 
-            this.rtD_PGF3.BufferByte = ((byte)(10));
-            this.rtD_PGF3.Location = new System.Drawing.Point(490, 207);
-            this.rtD_PGF3.Name = "rtD_PGF3";
-            this.rtD_PGF3.Size = new System.Drawing.Size(211, 195);
-            this.rtD_PGF3.TabIndex = 2;
+            this.rtD_PGF1.BufferByte = ((byte)(0));
+            this.rtD_PGF1.Enabled = false;
+            this.rtD_PGF1.Location = new System.Drawing.Point(6, 6);
+            this.rtD_PGF1.Name = "rtD_PGF1";
+            this.rtD_PGF1.Size = new System.Drawing.Size(695, 195);
+            this.rtD_PGF1.SubControlLocation = new System.Drawing.Point(3, 48);
+            this.rtD_PGF1.TabIndex = 0;
             // 
             // RTD_Frame
             // 
@@ -114,7 +106,6 @@ namespace PXR_Tool
 
         private System.Windows.Forms.TabControl rtdTabControl;
         private System.Windows.Forms.TabPage rtdTabPageA;
-        private System.Windows.Forms.TabPage tabPage2;
         private RTD_PGF rtD_PGF1;
         private RTD_PGF rtD_PGF2;
         private RTD_PGF rtD_PGF3;

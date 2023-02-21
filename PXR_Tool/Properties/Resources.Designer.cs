@@ -8,9 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
-namespace PXR_Tool.Properties
-{
+namespace PXR_Tool.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -18,52 +19,71 @@ namespace PXR_Tool.Properties
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PXR_Tool.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;rtdDict&quot;: {&quot;0&quot;: {&quot;description&quot;: &quot;Breaker Statuses&quot;, &quot;majorDataType&quot;: 1, &quot;bufferByte&quot;: 0, &quot;parameters&quot;: [{&quot;pName&quot;: &quot;Primary&quot;, &quot;conversion&quot;: {&quot;dataType&quot;: 15, &quot;overrideLength&quot;: -1}, &quot;startIndex&quot;: 8, &quot;scaleFactor&quot;: 1, &quot;bitPosition&quot;: -1}, {&quot;pName&quot;: &quot;Secondary&quot;, &quot;conversion&quot;: {&quot;dataType&quot;: 16, &quot;overrideLength&quot;: -1}, &quot;startIndex&quot;: 9, &quot;scaleFactor&quot;: 1, &quot;bitPosition&quot;: -1}, {&quot;pName&quot;: &quot;Cause&quot;, &quot;conversion&quot;: {&quot;dataType&quot;: 17, &quot;overrideLength&quot;: -1}, &quot;startIndex&quot;: 10, &quot;scaleFactor&quot;: 1, &quot;bitPosition&quot;: -1}], &quot;payloadRespon [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string PdPxr25DeviceInfo {
+            get {
+                return ResourceManager.GetString("PdPxr25DeviceInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;rtdDict&quot;: {&quot;0&quot;: {&quot;description&quot;: &quot;Breaker Statuses&quot;, &quot;majorDataType&quot;: 1, &quot;bufferByte&quot;: 0, &quot;parameters&quot;: [{&quot;pName&quot;: &quot;Primary&quot;, &quot;conversion&quot;: {&quot;dataType&quot;: 15, &quot;overrideLength&quot;: -1}, &quot;startIndex&quot;: 8, &quot;scaleFactor&quot;: 1, &quot;bitPosition&quot;: -1}, {&quot;pName&quot;: &quot;Secondary&quot;, &quot;conversion&quot;: {&quot;dataType&quot;: 16, &quot;overrideLength&quot;: -1}, &quot;startIndex&quot;: 9, &quot;scaleFactor&quot;: 1, &quot;bitPosition&quot;: -1}, {&quot;pName&quot;: &quot;Cause&quot;, &quot;conversion&quot;: {&quot;dataType&quot;: 17, &quot;overrideLength&quot;: -1}, &quot;startIndex&quot;: 10, &quot;scaleFactor&quot;: 1, &quot;bitPosition&quot;: -1}], &quot;payloadRespon [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Pxr35DeviceInfo {
+            get {
+                return ResourceManager.GetString("Pxr35DeviceInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {&quot;rtdDict&quot;: {&quot;0&quot;: {&quot;description&quot;: &quot;Breaker Statuses&quot;, &quot;majorDataType&quot;: 1, &quot;bufferByte&quot;: 0, &quot;parameters&quot;: [{&quot;pName&quot;: &quot;Primary&quot;, &quot;conversion&quot;: {&quot;dataType&quot;: 15, &quot;overrideLength&quot;: -1}, &quot;startIndex&quot;: 8, &quot;scaleFactor&quot;: 1, &quot;bitPosition&quot;: -1}, {&quot;pName&quot;: &quot;Secondary&quot;, &quot;conversion&quot;: {&quot;dataType&quot;: 16, &quot;overrideLength&quot;: -1}, &quot;startIndex&quot;: 9, &quot;scaleFactor&quot;: 1, &quot;bitPosition&quot;: -1}, {&quot;pName&quot;: &quot;Cause&quot;, &quot;conversion&quot;: {&quot;dataType&quot;: 17, &quot;overrideLength&quot;: -1}, &quot;startIndex&quot;: 10, &quot;scaleFactor&quot;: 1, &quot;bitPosition&quot;: -1}], &quot;payloadRespon [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TokyoDeviceInfo {
+            get {
+                return ResourceManager.GetString("TokyoDeviceInfo", resourceCulture);
             }
         }
     }

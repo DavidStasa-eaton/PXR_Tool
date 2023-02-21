@@ -62,6 +62,25 @@ namespace PXR_Tool
 
             UniRequest req = _pGroup.ReadRequest();
             UniResponse response = await MainForm.instance.AsyncTransaction(req);
+            if (response.goodResponse)
+            {
+                string[] values = response.Values;
+
+                if (values.Length < rtdDGV.Rows.Count) // More values than rows
+                {
+                    foreach (DataGridViewRow dgvr in rtdDGV.Rows)
+                    {
+                        dgvr.Cells[1].Value = "Length Error";
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < rtdDGV.Rows.Count; i++)
+                    {
+                        rtdDGV.Rows[i].Cells[1].Value = values[i];
+                    }
+                }
+            }
         }
     }
 }

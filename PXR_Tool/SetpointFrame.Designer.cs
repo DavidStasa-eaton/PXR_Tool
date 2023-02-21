@@ -52,6 +52,8 @@ namespace PXR_Tool
             this.spTabPageG = new System.Windows.Forms.TabPage();
             this.sP_PGF19 = new PXR_Tool.SP_PGF();
             this.sP_PGF18 = new PXR_Tool.SP_PGF();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.spTabControl.SuspendLayout();
             this.spTabPageA.SuspendLayout();
             this.spTabPageB.SuspendLayout();
@@ -294,6 +296,8 @@ namespace PXR_Tool
             // spTabPageG
             // 
             this.spTabPageG.BackColor = System.Drawing.Color.Silver;
+            this.spTabPageG.Controls.Add(this.label2);
+            this.spTabPageG.Controls.Add(this.label1);
             this.spTabPageG.Controls.Add(this.sP_PGF19);
             this.spTabPageG.Controls.Add(this.sP_PGF18);
             this.spTabPageG.Location = new System.Drawing.Point(4, 22);
@@ -324,6 +328,28 @@ namespace PXR_Tool
             this.sP_PGF18.SubControlLocation = new System.Drawing.Point(3, 48);
             this.sP_PGF18.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.DarkRed;
+            this.label1.Location = new System.Drawing.Point(360, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(321, 52);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Reply is short?\r\nDocument says 122 bytes including reserved. \r\nI removed the rese" +
+    "rved bytes and it still seems 2 bytes short\r\nEngine (ATS) Test Duration value is" +
+    " currently the checksum value.";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.DarkRed;
+            this.label2.Location = new System.Drawing.Point(205, 457);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(223, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Had to remove some of the \"reserved\" values";
+            // 
             // SetpointFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -340,6 +366,7 @@ namespace PXR_Tool
             this.spTabPageE.ResumeLayout(false);
             this.spTabPageF.ResumeLayout(false);
             this.spTabPageG.ResumeLayout(false);
+            this.spTabPageG.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -369,5 +396,7 @@ namespace PXR_Tool
         private System.Windows.Forms.TabPage spTabPageG;
         private SP_PGF sP_PGF19;
         private SP_PGF sP_PGF18;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

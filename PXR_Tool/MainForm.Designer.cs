@@ -36,7 +36,6 @@ namespace PXR_Tool
             this.rtD_Frame = new PXR_Tool.RTD_Frame();
             this.spTab = new System.Windows.Forms.TabPage();
             this.setpointFrame = new PXR_Tool.SetpointFrame();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.connectedDeviceInfoTL = new System.Windows.Forms.TableLayoutPanel();
             this.typeLabel = new System.Windows.Forms.Label();
             this.ratingLabel = new System.Windows.Forms.Label();
@@ -45,7 +44,8 @@ namespace PXR_Tool
             this.label1 = new System.Windows.Forms.Label();
             this.frameLabel = new System.Windows.Forms.Label();
             this.connPanel = new System.Windows.Forms.Panel();
-            this.selectPortConnectFrame = new StasaLibrary.EtuConnFrames.SelectPortConnectFrame();
+            this.autoConnectCheckbox = new System.Windows.Forms.CheckBox();
+            this.connMenu = new StasaLibrary.EtuConnFrames.ConnectionPortSelectFrame();
             this.passwordGroupbox = new System.Windows.Forms.GroupBox();
             this.autoPasswordCheckbox = new System.Windows.Forms.CheckBox();
             this.setPasswordButton = new System.Windows.Forms.Button();
@@ -96,7 +96,6 @@ namespace PXR_Tool
             // 
             this.mainTabControl.Controls.Add(this.rtdTab);
             this.mainTabControl.Controls.Add(this.spTab);
-            this.mainTabControl.Controls.Add(this.tabPage1);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.Location = new System.Drawing.Point(255, 3);
             this.mainTabControl.Name = "mainTabControl";
@@ -143,15 +142,6 @@ namespace PXR_Tool
             this.setpointFrame.Name = "setpointFrame";
             this.setpointFrame.Size = new System.Drawing.Size(1185, 719);
             this.setpointFrame.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1191, 725);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // connectedDeviceInfoTL
             // 
@@ -249,7 +239,8 @@ namespace PXR_Tool
             // 
             // connPanel
             // 
-            this.connPanel.Controls.Add(this.selectPortConnectFrame);
+            this.connPanel.Controls.Add(this.autoConnectCheckbox);
+            this.connPanel.Controls.Add(this.connMenu);
             this.connPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.connPanel.Location = new System.Drawing.Point(0, 0);
             this.connPanel.Margin = new System.Windows.Forms.Padding(0);
@@ -257,16 +248,32 @@ namespace PXR_Tool
             this.connPanel.Size = new System.Drawing.Size(252, 50);
             this.connPanel.TabIndex = 6;
             // 
-            // selectPortConnectFrame
+            // autoConnectCheckbox
             // 
-            this.selectPortConnectFrame.ConnColor = System.Drawing.Color.LightGreen;
-            this.selectPortConnectFrame.DisconnColor = System.Drawing.SystemColors.ButtonFace;
-            this.selectPortConnectFrame.FailColor = System.Drawing.Color.LightSalmon;
-            this.selectPortConnectFrame.Location = new System.Drawing.Point(3, 3);
-            this.selectPortConnectFrame.Name = "selectPortConnectFrame";
-            this.selectPortConnectFrame.Size = new System.Drawing.Size(167, 44);
-            this.selectPortConnectFrame.TabIndex = 4;
-            this.selectPortConnectFrame.RowClickedEvent += new System.EventHandler<StasaLibrary.SelectConnection.RowClickedEventArgs>(this.selectPortConnectFrame_RowClickedEvent);
+            this.autoConnectCheckbox.AutoSize = true;
+            this.autoConnectCheckbox.Location = new System.Drawing.Point(169, 7);
+            this.autoConnectCheckbox.Name = "autoConnectCheckbox";
+            this.autoConnectCheckbox.Size = new System.Drawing.Size(66, 30);
+            this.autoConnectCheckbox.TabIndex = 5;
+            this.autoConnectCheckbox.Text = "Auto\r\nConnect";
+            this.autoConnectCheckbox.UseVisualStyleBackColor = true;
+            this.autoConnectCheckbox.CheckedChanged += new System.EventHandler(this.autoConnectCheckbox_CheckedChanged);
+            // 
+            // connMenu
+            // 
+            this.connMenu.AutoConnect = false;
+            this.connMenu.ConnColor = System.Drawing.Color.LightGreen;
+            this.connMenu.DisconnColor = System.Drawing.SystemColors.ButtonFace;
+            this.connMenu.FailColor = System.Drawing.Color.LightSalmon;
+            this.connMenu.Location = new System.Drawing.Point(3, 3);
+            this.connMenu.Name = "connMenu";
+            this.connMenu.Size = new System.Drawing.Size(167, 44);
+            this.connMenu.TabIndex = 4;
+            this.connMenu.ValidDescriptions = new string[] {
+        "Eaton PXR 20/25",
+        "Eaton PXR Trip Unit",
+        "USB Serial Device"};
+            this.connMenu.RowClickedEvent += new System.EventHandler<StasaLibrary.SelectConnection.RowClickedEventArgs>(this.selectPortConnectFrame_RowClickedEvent);
             // 
             // passwordGroupbox
             // 
@@ -285,6 +292,7 @@ namespace PXR_Tool
             // autoPasswordCheckbox
             // 
             this.autoPasswordCheckbox.AutoSize = true;
+            this.autoPasswordCheckbox.Enabled = false;
             this.autoPasswordCheckbox.Location = new System.Drawing.Point(59, 11);
             this.autoPasswordCheckbox.Name = "autoPasswordCheckbox";
             this.autoPasswordCheckbox.Size = new System.Drawing.Size(50, 30);
@@ -329,6 +337,7 @@ namespace PXR_Tool
             this.Controls.Add(this.mainTL);
             this.Name = "MainForm";
             this.Text = "PXR Tool - USB Communications";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.mainTL.ResumeLayout(false);
             this.mainTabControl.ResumeLayout(false);
@@ -337,6 +346,7 @@ namespace PXR_Tool
             this.connectedDeviceInfoTL.ResumeLayout(false);
             this.connectedDeviceInfoTL.PerformLayout();
             this.connPanel.ResumeLayout(false);
+            this.connPanel.PerformLayout();
             this.passwordGroupbox.ResumeLayout(false);
             this.passwordGroupbox.PerformLayout();
             this.ResumeLayout(false);
@@ -349,7 +359,7 @@ namespace PXR_Tool
         private System.Windows.Forms.TabControl mainTabControl;
         private System.Windows.Forms.TabPage rtdTab;
         private System.Windows.Forms.TabPage spTab;
-        private StasaLibrary.EtuConnFrames.SelectPortConnectFrame selectPortConnectFrame;
+        private StasaLibrary.EtuConnFrames.ConnectionPortSelectFrame connMenu;
         private System.Windows.Forms.TableLayoutPanel connectedDeviceInfoTL;
         private System.Windows.Forms.Label typeLabel;
         private System.Windows.Forms.Label ratingLabel;
@@ -357,7 +367,6 @@ namespace PXR_Tool
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label frameLabel;
-        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Panel connPanel;
         private RTD_Frame rtD_Frame;
         private SetpointFrame setpointFrame;
@@ -366,6 +375,7 @@ namespace PXR_Tool
         private System.Windows.Forms.TextBox passwordTextbox;
         private System.Windows.Forms.Button inputPasswordButton;
         private System.Windows.Forms.CheckBox autoPasswordCheckbox;
+        private System.Windows.Forms.CheckBox autoConnectCheckbox;
     }
 }
 
