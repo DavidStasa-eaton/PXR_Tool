@@ -14,11 +14,18 @@ namespace PXR_Tool
 {
     public partial class RTD_PGF : ParameterGroupFrame
     {
+
         public RTD_PGF()
         {
             InitializeComponent();
+            IsReadOnly = true;
+
+            CheckIfDesignMode();
 
             SizeAltered += RTD_PGF_SizeAltered;
+            Program.DeviceChangedEvent += Program_DeviceChangedEvent;
+
+            
         }
 
         private void RTD_PGF_SizeAltered(object sender, SizeChangeEventArgs e)
@@ -27,16 +34,32 @@ namespace PXR_Tool
             rtdDGV.Size = new Size(e.width, e.height);
         }
 
+        private void Program_DeviceChangedEvent(BroadDeviceChangedEventArgs obj)
+        {
+            UpdateParmeterGroup();
+        }
+
         public override void UpdateParmeterGroup()
         {
             //base.BufferByteUpdated();
 
-            // Check if there is a connected device and that the RTD contains the buffer byte
-            if (MainForm.instance == null) return;
-            if (MainForm.instance.connectedDevice == null) return;
-            if (!MainForm.instance.connectedDevice.rtdDict.ContainsKey(BufferByte)) return;
+            DeviceInfo di = GetDeviceInfo(_isInDesignMode);
+            if (di == null)
+            {
+                groupBox.Text = "Null Info";
+                return;
+            }
 
-            _pGroup = MainForm.instance.connectedDevice.rtdDict[BufferByte];
+            try
+            {
+                _pGroup = di.rtdDict[BufferByte];
+            }
+            catch (KeyNotFoundException)
+            {
+                Enabled = false;
+                return;
+            }
+            
 
             groupBox.Text = $"RTD {_pGroup.bufferByte}: {_pGroup.description}";
 
@@ -59,6 +82,7 @@ namespace PXR_Tool
         private async void readButton_Click(object sender, EventArgs e)
         {
             if (_pGroup == null) return;
+            readButton.WorkStart();
 
             UniRequest req = _pGroup.ReadRequest();
             UniResponse response = await MainForm.instance.AsyncTransaction(req);
@@ -81,6 +105,8 @@ namespace PXR_Tool
                     }
                 }
             }
+
+            readButton.ParseBool(response.goodResponse);
         }
     }
 }

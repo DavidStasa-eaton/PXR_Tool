@@ -17,6 +17,8 @@ namespace PXR_Tool
         public event EventHandler<PostTransactionEventArgs> PostReadEvent;
         public event EventHandler<PostTransactionEventArgs> PostWriteEvent;
 
+        protected bool _isInDesignMode = false;
+
         private Point _subControlLocation = new Point(3, 48);
         public Point SubControlLocation { get { return _subControlLocation; }
             set
@@ -39,9 +41,31 @@ namespace PXR_Tool
 
         protected ParameterGroup _pGroup;
 
+        private bool _isReadOnly = false;
+        public bool IsReadOnly { get { return _isReadOnly; }
+            set
+            {
+                _isReadOnly = true;
+                ToggleReadOnly();
+            }
+        }
+
         public ParameterGroupFrame()
         {
             InitializeComponent();
+        }
+
+        protected void CheckIfDesignMode()
+        {
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+            {
+                _isInDesignMode = true; ;
+            }
+        }
+
+        protected void ToggleReadOnly()
+        {
+            writeButton.Visible = !_isReadOnly;
         }
 
         // will set a flag when all properties are set to allow for packing of controls.
@@ -60,8 +84,35 @@ namespace PXR_Tool
 
         }
 
+        /// <summary>
+        /// Will return connected device if one exist. Will return PXR35 Device if in design mode. 
+        /// Will Disable control if null is returned.
+        /// </summary>
+        /// <returns></returns>
+        protected DeviceInfo GetDeviceInfo(bool designMode = false)
+        {
+            Enabled = true;
+            if (Program.connectedDevice == null)
+            {
+                if (designMode)
+                {
+                    Enabled = true;
+                    return DeviceDiscovery.GetDevice(DeviceDiscovery.DeviceType.Pxr35);
+                }
+            }
+            else
+            {
+                Enabled = true;
+                return Program.connectedDevice;
+            }
+
+            Enabled = false;
+            return null;
+        }
+
         private void ParameterGroupFrame_Load(object sender, EventArgs e)
         {
+            
             UpdateParmeterGroup();
             
         }
@@ -95,6 +146,11 @@ namespace PXR_Tool
             Size = new Size(width, height);
 
             writeButton.Location = new Point(Size.Width - (writeButton.Size.Width + 20), writeButton.Location.Y);
+        }
+
+        private void groupBox_Paint(object sender, PaintEventArgs e)
+        {
+            
         }
     }
 

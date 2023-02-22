@@ -31,8 +31,8 @@ namespace PXR_Tool
         {
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.writeButton = new System.Windows.Forms.Button();
-            this.readButton = new System.Windows.Forms.Button();
             this.secondRefreshButton = new System.Windows.Forms.CheckBox();
+            this.readButton = new System.Windows.Forms.Button();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +48,7 @@ namespace PXR_Tool
             this.groupBox.TabIndex = 0;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Parameter Group";
+            this.groupBox.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
             // 
             // writeButton
             // 
@@ -58,15 +59,6 @@ namespace PXR_Tool
             this.writeButton.Text = "Write";
             this.writeButton.UseVisualStyleBackColor = true;
             // 
-            // readButton
-            // 
-            this.readButton.Location = new System.Drawing.Point(6, 19);
-            this.readButton.Name = "readButton";
-            this.readButton.Size = new System.Drawing.Size(69, 23);
-            this.readButton.TabIndex = 0;
-            this.readButton.Text = "Read";
-            this.readButton.UseVisualStyleBackColor = true;
-            // 
             // secondRefreshButton
             // 
             this.secondRefreshButton.AutoSize = true;
@@ -76,6 +68,15 @@ namespace PXR_Tool
             this.secondRefreshButton.TabIndex = 2;
             this.secondRefreshButton.Text = "1s ⟳";
             this.secondRefreshButton.UseVisualStyleBackColor = true;
+            // 
+            // readButton
+            // 
+            this.readButton.Location = new System.Drawing.Point(6, 19);
+            this.readButton.Name = "readButton";
+            this.readButton.Size = new System.Drawing.Size(69, 23);
+            this.readButton.TabIndex = 0;
+            this.readButton.Text = "Read";
+            this.readButton.UseVisualStyleBackColor = true;
             // 
             // ParameterGroupFrame
             // 

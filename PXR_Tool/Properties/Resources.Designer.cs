@@ -59,32 +59,5 @@ namespace PXR_Tool.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {&quot;rtdDict&quot;: {&quot;0&quot;: {&quot;description&quot;: &quot;Breaker Statuses&quot;, &quot;majorDataType&quot;: 1, &quot;bufferByte&quot;: 0, &quot;parameters&quot;: [{&quot;pName&quot;: &quot;Primary&quot;, &quot;conversion&quot;: {&quot;dataType&quot;: 15, &quot;overrideLength&quot;: -1}, &quot;startIndex&quot;: 8, &quot;scaleFactor&quot;: 1, &quot;bitPosition&quot;: -1}, {&quot;pName&quot;: &quot;Secondary&quot;, &quot;conversion&quot;: {&quot;dataType&quot;: 16, &quot;overrideLength&quot;: -1}, &quot;startIndex&quot;: 9, &quot;scaleFactor&quot;: 1, &quot;bitPosition&quot;: -1}, {&quot;pName&quot;: &quot;Cause&quot;, &quot;conversion&quot;: {&quot;dataType&quot;: 17, &quot;overrideLength&quot;: -1}, &quot;startIndex&quot;: 10, &quot;scaleFactor&quot;: 1, &quot;bitPosition&quot;: -1}], &quot;payloadRespon [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string PdPxr25DeviceInfo {
-            get {
-                return ResourceManager.GetString("PdPxr25DeviceInfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {&quot;rtdDict&quot;: {&quot;0&quot;: {&quot;description&quot;: &quot;Breaker Statuses&quot;, &quot;majorDataType&quot;: 1, &quot;bufferByte&quot;: 0, &quot;parameters&quot;: [{&quot;pName&quot;: &quot;Primary&quot;, &quot;conversion&quot;: {&quot;dataType&quot;: 15, &quot;overrideLength&quot;: -1}, &quot;startIndex&quot;: 8, &quot;scaleFactor&quot;: 1, &quot;bitPosition&quot;: -1}, {&quot;pName&quot;: &quot;Secondary&quot;, &quot;conversion&quot;: {&quot;dataType&quot;: 16, &quot;overrideLength&quot;: -1}, &quot;startIndex&quot;: 9, &quot;scaleFactor&quot;: 1, &quot;bitPosition&quot;: -1}, {&quot;pName&quot;: &quot;Cause&quot;, &quot;conversion&quot;: {&quot;dataType&quot;: 17, &quot;overrideLength&quot;: -1}, &quot;startIndex&quot;: 10, &quot;scaleFactor&quot;: 1, &quot;bitPosition&quot;: -1}], &quot;payloadRespon [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Pxr35DeviceInfo {
-            get {
-                return ResourceManager.GetString("Pxr35DeviceInfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {&quot;rtdDict&quot;: {&quot;0&quot;: {&quot;description&quot;: &quot;Breaker Statuses&quot;, &quot;majorDataType&quot;: 1, &quot;bufferByte&quot;: 0, &quot;parameters&quot;: [{&quot;pName&quot;: &quot;Primary&quot;, &quot;conversion&quot;: {&quot;dataType&quot;: 15, &quot;overrideLength&quot;: -1}, &quot;startIndex&quot;: 8, &quot;scaleFactor&quot;: 1, &quot;bitPosition&quot;: -1}, {&quot;pName&quot;: &quot;Secondary&quot;, &quot;conversion&quot;: {&quot;dataType&quot;: 16, &quot;overrideLength&quot;: -1}, &quot;startIndex&quot;: 9, &quot;scaleFactor&quot;: 1, &quot;bitPosition&quot;: -1}, {&quot;pName&quot;: &quot;Cause&quot;, &quot;conversion&quot;: {&quot;dataType&quot;: 17, &quot;overrideLength&quot;: -1}, &quot;startIndex&quot;: 10, &quot;scaleFactor&quot;: 1, &quot;bitPosition&quot;: -1}], &quot;payloadRespon [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string TokyoDeviceInfo {
-            get {
-                return ResourceManager.GetString("TokyoDeviceInfo", resourceCulture);
-            }
-        }
     }
 }

@@ -15,7 +15,7 @@ using StasaLibrary;
 
 namespace PXR_Tool
 {
-    public enum DeviceType { PdPxr25, PdPxr20, Tokyo, Acb20, Acb22, Pxr35, None }
+    
 
     public partial class MainForm : Form
     {
@@ -197,13 +197,13 @@ namespace PXR_Tool
             switch (newType)
             {
                 case ComDevice.BroadDeviceType.ACB:
-                    Program.ChangeDeviceType(DeviceType.Tokyo);
+                    Program.ChangeDeviceType(DeviceDiscovery.DeviceType.Tokyo);
                     break;
                 case ComDevice.BroadDeviceType.PD:
-                    Program.ChangeDeviceType(DeviceType.PdPxr25);
+                    Program.ChangeDeviceType(DeviceDiscovery.DeviceType.PdPxr25);
                     break;
                 default:
-                    Program.ChangeDeviceType(DeviceType.Pxr35);
+                    Program.ChangeDeviceType(DeviceDiscovery.DeviceType.Pxr35);
                     break;
 
             }

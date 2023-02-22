@@ -64,6 +64,7 @@ namespace PXR_Tool
         {
             InitializeComponent();
 
+            CheckIfDesignMode();
             cells = new List<LabeledCell>();
 
             SizeAltered += SP_PGF_SizeAltered;
@@ -121,7 +122,7 @@ namespace PXR_Tool
         /// </summary>
         private void PackCells()
         {
-            if (!_allSet) return;
+            //if (!_allSet) return;
 
             if (_pGroup == null) return;
 
@@ -163,16 +164,23 @@ namespace PXR_Tool
 
         public override void UpdateParmeterGroup()
         {
+            DeviceInfo di = GetDeviceInfo(_isInDesignMode);
+            if (di == null)
+            {
+                groupBox.Text = "Null Info";
+                return;
+            }
+
             try
             {
-                _pGroup = Program.connectedDevice.spDict[BufferByte];
+                _pGroup = di.spDict[BufferByte];
             }
-            catch
+            catch (KeyNotFoundException)
             {
                 Enabled = false;
                 return;
             }
-            Enabled = true;
+            
 
             groupBox.Text = $"Group {_pGroup.bufferByte}: {_pGroup.description}";
 

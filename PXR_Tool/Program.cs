@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using StasaLibrary;
+
 namespace PXR_Tool
 {
     static class Program
@@ -12,45 +14,32 @@ namespace PXR_Tool
         public static StasaLibrary.DeviceInfo connectedDevice = null;
 
         public static event Action<BroadDeviceChangedEventArgs> DeviceChangedEvent;
-        public static DeviceType currentBDT = DeviceType.None;
+        public static DeviceDiscovery.DeviceType currentBDT = DeviceDiscovery.DeviceType.None;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            ChangeDeviceType(DeviceType.Pxr35);
-
+            ChangeDeviceType(DeviceDiscovery.DeviceType.Pxr35);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
         }
 
-        public static void ChangeDeviceType(DeviceType newType)
+        public static void ChangeDeviceType(DeviceDiscovery.DeviceType newType)
         {
-            DeviceType oldType = currentBDT;
+            DeviceDiscovery.DeviceType oldType = currentBDT;
             if (newType == currentBDT) // Do nothing if type changes.
                 return;
 
 
-            string parseText;
-            switch (newType)
-            {
-                case DeviceType.Tokyo:
-                    connectedDevice = Newtonsoft.Json.JsonConvert.DeserializeObject<StasaLibrary.TokyoDeviceInfo>(Properties.Resources.TokyoDeviceInfo);
-                    break;
-                case DeviceType.PdPxr25:
-                    connectedDevice = Newtonsoft.Json.JsonConvert.DeserializeObject<StasaLibrary.PdDeviceInfo>(Properties.Resources.PdPxr25DeviceInfo);
-                    break;
-                default:
-                    connectedDevice = Newtonsoft.Json.JsonConvert.DeserializeObject<StasaLibrary.Pxr35DeviceInfo>(Properties.Resources.Pxr35DeviceInfo);
-                    break;
-            }
+            connectedDevice = DeviceDiscovery.GetDevice(newType);
 
             currentBDT = newType;
 
-            if (oldType == DeviceType.None)
+            if (oldType == DeviceDiscovery.DeviceType.None)
                 return;
 
             BroadDeviceChangedEventArgs bdcea = new BroadDeviceChangedEventArgs() { newType = newType, previousType = oldType };
@@ -60,7 +49,7 @@ namespace PXR_Tool
 
     public class BroadDeviceChangedEventArgs : EventArgs
     {
-        public DeviceType previousType { get; set; }
-        public DeviceType newType { get; set; }
+        public DeviceDiscovery.DeviceType previousType { get; set; }
+        public DeviceDiscovery.DeviceType newType { get; set; }
     }
 }

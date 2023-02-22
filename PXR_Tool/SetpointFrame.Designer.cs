@@ -31,29 +31,29 @@ namespace PXR_Tool
         {
             this.spTabControl = new System.Windows.Forms.TabControl();
             this.spTabPageA = new System.Windows.Forms.TabPage();
+            this.spTabPageB = new System.Windows.Forms.TabPage();
+            this.spTapPageC = new System.Windows.Forms.TabPage();
+            this.spTabPageD = new System.Windows.Forms.TabPage();
+            this.spTabPageE = new System.Windows.Forms.TabPage();
+            this.spTabPageF = new System.Windows.Forms.TabPage();
+            this.spTabPageG = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.sP_PGF1 = new PXR_Tool.SP_PGF();
             this.sP_PGF0 = new PXR_Tool.SP_PGF();
-            this.spTabPageB = new System.Windows.Forms.TabPage();
             this.sP_PGF4 = new PXR_Tool.SP_PGF();
             this.sP_PGF3 = new PXR_Tool.SP_PGF();
             this.sP_PGF2 = new PXR_Tool.SP_PGF();
-            this.spTapPageC = new System.Windows.Forms.TabPage();
             this.sP_PGF10 = new PXR_Tool.SP_PGF();
-            this.spTabPageD = new System.Windows.Forms.TabPage();
             this.sP_PGF5 = new PXR_Tool.SP_PGF();
-            this.spTabPageE = new System.Windows.Forms.TabPage();
             this.sP_PGF15 = new PXR_Tool.SP_PGF();
             this.sP_PGF14 = new PXR_Tool.SP_PGF();
             this.sP_PGF13 = new PXR_Tool.SP_PGF();
             this.sP_PGF12 = new PXR_Tool.SP_PGF();
-            this.spTabPageF = new System.Windows.Forms.TabPage();
             this.sP_PGF7 = new PXR_Tool.SP_PGF();
             this.sP_PGF6 = new PXR_Tool.SP_PGF();
-            this.spTabPageG = new System.Windows.Forms.TabPage();
             this.sP_PGF19 = new PXR_Tool.SP_PGF();
             this.sP_PGF18 = new PXR_Tool.SP_PGF();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.spTabControl.SuspendLayout();
             this.spTabPageA.SuspendLayout();
             this.spTabPageB.SuspendLayout();
@@ -66,6 +66,7 @@ namespace PXR_Tool
             // 
             // spTabControl
             // 
+            this.spTabControl.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.spTabControl.Controls.Add(this.spTabPageA);
             this.spTabControl.Controls.Add(this.spTabPageB);
             this.spTabControl.Controls.Add(this.spTapPageC);
@@ -74,259 +75,115 @@ namespace PXR_Tool
             this.spTabControl.Controls.Add(this.spTabPageF);
             this.spTabControl.Controls.Add(this.spTabPageG);
             this.spTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spTabControl.HotTrack = true;
+            this.spTabControl.ItemSize = new System.Drawing.Size(100, 20);
             this.spTabControl.Location = new System.Drawing.Point(0, 0);
+            this.spTabControl.Multiline = true;
             this.spTabControl.Name = "spTabControl";
             this.spTabControl.SelectedIndex = 0;
             this.spTabControl.Size = new System.Drawing.Size(1249, 690);
+            this.spTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.spTabControl.TabIndex = 0;
             // 
             // spTabPageA
             // 
+            this.spTabPageA.AutoScroll = true;
             this.spTabPageA.BackColor = System.Drawing.Color.Silver;
             this.spTabPageA.Controls.Add(this.sP_PGF1);
             this.spTabPageA.Controls.Add(this.sP_PGF0);
-            this.spTabPageA.Location = new System.Drawing.Point(4, 22);
+            this.spTabPageA.Location = new System.Drawing.Point(4, 24);
             this.spTabPageA.Name = "spTabPageA";
             this.spTabPageA.Padding = new System.Windows.Forms.Padding(3);
-            this.spTabPageA.Size = new System.Drawing.Size(1241, 664);
+            this.spTabPageA.Size = new System.Drawing.Size(1241, 662);
             this.spTabPageA.TabIndex = 0;
             this.spTabPageA.Text = "Setpoints 0, 1";
             // 
-            // sP_PGF1
-            // 
-            this.sP_PGF1.BufferByte = ((byte)(1));
-            this.sP_PGF1.Column = 2;
-            this.sP_PGF1.Location = new System.Drawing.Point(574, 30);
-            this.sP_PGF1.Name = "sP_PGF1";
-            this.sP_PGF1.Rows = 0;
-            this.sP_PGF1.Size = new System.Drawing.Size(340, 195);
-            this.sP_PGF1.SubControlLocation = new System.Drawing.Point(3, 48);
-            this.sP_PGF1.TabIndex = 1;
-            // 
-            // sP_PGF0
-            // 
-            this.sP_PGF0.BufferByte = ((byte)(0));
-            this.sP_PGF0.Column = 2;
-            this.sP_PGF0.Location = new System.Drawing.Point(16, 30);
-            this.sP_PGF0.Name = "sP_PGF0";
-            this.sP_PGF0.Rows = 0;
-            this.sP_PGF0.Size = new System.Drawing.Size(392, 195);
-            this.sP_PGF0.SubControlLocation = new System.Drawing.Point(3, 48);
-            this.sP_PGF0.TabIndex = 0;
-            // 
             // spTabPageB
             // 
+            this.spTabPageB.AutoScroll = true;
             this.spTabPageB.BackColor = System.Drawing.Color.Silver;
             this.spTabPageB.Controls.Add(this.sP_PGF4);
             this.spTabPageB.Controls.Add(this.sP_PGF3);
             this.spTabPageB.Controls.Add(this.sP_PGF2);
-            this.spTabPageB.Location = new System.Drawing.Point(4, 22);
+            this.spTabPageB.Location = new System.Drawing.Point(4, 24);
             this.spTabPageB.Name = "spTabPageB";
             this.spTabPageB.Padding = new System.Windows.Forms.Padding(3);
-            this.spTabPageB.Size = new System.Drawing.Size(1241, 664);
+            this.spTabPageB.Size = new System.Drawing.Size(1241, 662);
             this.spTabPageB.TabIndex = 1;
             this.spTabPageB.Text = "2, 3, 5";
             // 
-            // sP_PGF4
-            // 
-            this.sP_PGF4.BufferByte = ((byte)(5));
-            this.sP_PGF4.Column = 2;
-            this.sP_PGF4.Location = new System.Drawing.Point(448, 6);
-            this.sP_PGF4.Name = "sP_PGF4";
-            this.sP_PGF4.Rows = 0;
-            this.sP_PGF4.Size = new System.Drawing.Size(340, 195);
-            this.sP_PGF4.SubControlLocation = new System.Drawing.Point(3, 48);
-            this.sP_PGF4.TabIndex = 2;
-            // 
-            // sP_PGF3
-            // 
-            this.sP_PGF3.BufferByte = ((byte)(3));
-            this.sP_PGF3.Column = 2;
-            this.sP_PGF3.Location = new System.Drawing.Point(27, 175);
-            this.sP_PGF3.Name = "sP_PGF3";
-            this.sP_PGF3.Rows = 0;
-            this.sP_PGF3.Size = new System.Drawing.Size(340, 195);
-            this.sP_PGF3.SubControlLocation = new System.Drawing.Point(3, 48);
-            this.sP_PGF3.TabIndex = 1;
-            // 
-            // sP_PGF2
-            // 
-            this.sP_PGF2.BufferByte = ((byte)(2));
-            this.sP_PGF2.Column = 2;
-            this.sP_PGF2.Location = new System.Drawing.Point(27, 6);
-            this.sP_PGF2.Name = "sP_PGF2";
-            this.sP_PGF2.Rows = 0;
-            this.sP_PGF2.Size = new System.Drawing.Size(376, 136);
-            this.sP_PGF2.SubControlLocation = new System.Drawing.Point(3, 48);
-            this.sP_PGF2.TabIndex = 0;
-            // 
             // spTapPageC
             // 
+            this.spTapPageC.AutoScroll = true;
             this.spTapPageC.BackColor = System.Drawing.Color.Silver;
             this.spTapPageC.Controls.Add(this.sP_PGF10);
-            this.spTapPageC.Location = new System.Drawing.Point(4, 22);
+            this.spTapPageC.Location = new System.Drawing.Point(4, 24);
             this.spTapPageC.Name = "spTapPageC";
-            this.spTapPageC.Size = new System.Drawing.Size(1241, 664);
+            this.spTapPageC.Size = new System.Drawing.Size(1241, 662);
             this.spTapPageC.TabIndex = 2;
             this.spTapPageC.Text = "10";
             // 
-            // sP_PGF10
-            // 
-            this.sP_PGF10.BufferByte = ((byte)(10));
-            this.sP_PGF10.Column = 3;
-            this.sP_PGF10.Location = new System.Drawing.Point(13, 17);
-            this.sP_PGF10.Name = "sP_PGF10";
-            this.sP_PGF10.Rows = 0;
-            this.sP_PGF10.Size = new System.Drawing.Size(340, 195);
-            this.sP_PGF10.SubControlLocation = new System.Drawing.Point(3, 48);
-            this.sP_PGF10.TabIndex = 2;
-            // 
             // spTabPageD
             // 
+            this.spTabPageD.AutoScroll = true;
             this.spTabPageD.BackColor = System.Drawing.Color.Silver;
             this.spTabPageD.Controls.Add(this.sP_PGF5);
-            this.spTabPageD.Location = new System.Drawing.Point(4, 22);
+            this.spTabPageD.Location = new System.Drawing.Point(4, 24);
             this.spTabPageD.Name = "spTabPageD";
-            this.spTabPageD.Size = new System.Drawing.Size(1241, 664);
+            this.spTabPageD.Size = new System.Drawing.Size(1241, 662);
             this.spTabPageD.TabIndex = 3;
             this.spTabPageD.Text = "11";
             // 
-            // sP_PGF5
-            // 
-            this.sP_PGF5.BufferByte = ((byte)(11));
-            this.sP_PGF5.Column = 3;
-            this.sP_PGF5.Location = new System.Drawing.Point(33, 40);
-            this.sP_PGF5.Name = "sP_PGF5";
-            this.sP_PGF5.Rows = 0;
-            this.sP_PGF5.Size = new System.Drawing.Size(340, 195);
-            this.sP_PGF5.SubControlLocation = new System.Drawing.Point(3, 48);
-            this.sP_PGF5.TabIndex = 0;
-            // 
             // spTabPageE
             // 
+            this.spTabPageE.AutoScroll = true;
             this.spTabPageE.BackColor = System.Drawing.Color.Silver;
             this.spTabPageE.Controls.Add(this.sP_PGF15);
             this.spTabPageE.Controls.Add(this.sP_PGF14);
             this.spTabPageE.Controls.Add(this.sP_PGF13);
             this.spTabPageE.Controls.Add(this.sP_PGF12);
-            this.spTabPageE.Location = new System.Drawing.Point(4, 22);
+            this.spTabPageE.Location = new System.Drawing.Point(4, 24);
             this.spTabPageE.Name = "spTabPageE";
             this.spTabPageE.Padding = new System.Windows.Forms.Padding(3);
-            this.spTabPageE.Size = new System.Drawing.Size(1241, 664);
+            this.spTabPageE.Size = new System.Drawing.Size(1241, 662);
             this.spTabPageE.TabIndex = 4;
             this.spTabPageE.Text = "12, 13, 14, 15";
             // 
-            // sP_PGF15
-            // 
-            this.sP_PGF15.BufferByte = ((byte)(15));
-            this.sP_PGF15.Column = 2;
-            this.sP_PGF15.Location = new System.Drawing.Point(434, 130);
-            this.sP_PGF15.Name = "sP_PGF15";
-            this.sP_PGF15.Rows = 0;
-            this.sP_PGF15.Size = new System.Drawing.Size(340, 195);
-            this.sP_PGF15.SubControlLocation = new System.Drawing.Point(3, 48);
-            this.sP_PGF15.TabIndex = 3;
-            // 
-            // sP_PGF14
-            // 
-            this.sP_PGF14.BufferByte = ((byte)(14));
-            this.sP_PGF14.Column = 2;
-            this.sP_PGF14.Location = new System.Drawing.Point(15, 356);
-            this.sP_PGF14.Name = "sP_PGF14";
-            this.sP_PGF14.Rows = 0;
-            this.sP_PGF14.Size = new System.Drawing.Size(340, 195);
-            this.sP_PGF14.SubControlLocation = new System.Drawing.Point(3, 48);
-            this.sP_PGF14.TabIndex = 2;
-            // 
-            // sP_PGF13
-            // 
-            this.sP_PGF13.BufferByte = ((byte)(13));
-            this.sP_PGF13.Column = 2;
-            this.sP_PGF13.Location = new System.Drawing.Point(15, 6);
-            this.sP_PGF13.Name = "sP_PGF13";
-            this.sP_PGF13.Rows = 0;
-            this.sP_PGF13.Size = new System.Drawing.Size(340, 195);
-            this.sP_PGF13.SubControlLocation = new System.Drawing.Point(3, 48);
-            this.sP_PGF13.TabIndex = 1;
-            // 
-            // sP_PGF12
-            // 
-            this.sP_PGF12.BufferByte = ((byte)(12));
-            this.sP_PGF12.Column = 2;
-            this.sP_PGF12.Location = new System.Drawing.Point(424, 6);
-            this.sP_PGF12.Name = "sP_PGF12";
-            this.sP_PGF12.Rows = 0;
-            this.sP_PGF12.Size = new System.Drawing.Size(340, 118);
-            this.sP_PGF12.SubControlLocation = new System.Drawing.Point(3, 48);
-            this.sP_PGF12.TabIndex = 0;
-            // 
             // spTabPageF
             // 
+            this.spTabPageF.AutoScroll = true;
             this.spTabPageF.BackColor = System.Drawing.Color.Silver;
             this.spTabPageF.Controls.Add(this.sP_PGF7);
             this.spTabPageF.Controls.Add(this.sP_PGF6);
-            this.spTabPageF.Location = new System.Drawing.Point(4, 22);
+            this.spTabPageF.Location = new System.Drawing.Point(4, 24);
             this.spTabPageF.Name = "spTabPageF";
-            this.spTabPageF.Size = new System.Drawing.Size(1241, 664);
+            this.spTabPageF.Size = new System.Drawing.Size(1241, 662);
             this.spTabPageF.TabIndex = 5;
             this.spTabPageF.Text = "16, 17";
             // 
-            // sP_PGF7
-            // 
-            this.sP_PGF7.BufferByte = ((byte)(17));
-            this.sP_PGF7.Column = 3;
-            this.sP_PGF7.Location = new System.Drawing.Point(17, 397);
-            this.sP_PGF7.Name = "sP_PGF7";
-            this.sP_PGF7.Rows = 0;
-            this.sP_PGF7.Size = new System.Drawing.Size(340, 195);
-            this.sP_PGF7.SubControlLocation = new System.Drawing.Point(3, 48);
-            this.sP_PGF7.TabIndex = 1;
-            // 
-            // sP_PGF6
-            // 
-            this.sP_PGF6.BufferByte = ((byte)(16));
-            this.sP_PGF6.Column = 3;
-            this.sP_PGF6.Location = new System.Drawing.Point(17, 30);
-            this.sP_PGF6.Name = "sP_PGF6";
-            this.sP_PGF6.Rows = 0;
-            this.sP_PGF6.Size = new System.Drawing.Size(340, 195);
-            this.sP_PGF6.SubControlLocation = new System.Drawing.Point(3, 48);
-            this.sP_PGF6.TabIndex = 0;
-            // 
             // spTabPageG
             // 
+            this.spTabPageG.AutoScroll = true;
             this.spTabPageG.BackColor = System.Drawing.Color.Silver;
             this.spTabPageG.Controls.Add(this.label2);
             this.spTabPageG.Controls.Add(this.label1);
             this.spTabPageG.Controls.Add(this.sP_PGF19);
             this.spTabPageG.Controls.Add(this.sP_PGF18);
-            this.spTabPageG.Location = new System.Drawing.Point(4, 22);
+            this.spTabPageG.Location = new System.Drawing.Point(4, 24);
             this.spTabPageG.Name = "spTabPageG";
-            this.spTabPageG.Size = new System.Drawing.Size(1241, 664);
+            this.spTabPageG.Size = new System.Drawing.Size(1241, 662);
             this.spTabPageG.TabIndex = 6;
             this.spTabPageG.Text = "18, 19";
             // 
-            // sP_PGF19
+            // label2
             // 
-            this.sP_PGF19.BufferByte = ((byte)(19));
-            this.sP_PGF19.Column = 4;
-            this.sP_PGF19.Location = new System.Drawing.Point(14, 473);
-            this.sP_PGF19.Name = "sP_PGF19";
-            this.sP_PGF19.Rows = 0;
-            this.sP_PGF19.Size = new System.Drawing.Size(340, 195);
-            this.sP_PGF19.SubControlLocation = new System.Drawing.Point(3, 48);
-            this.sP_PGF19.TabIndex = 1;
-            // 
-            // sP_PGF18
-            // 
-            this.sP_PGF18.BufferByte = ((byte)(18));
-            this.sP_PGF18.Column = 4;
-            this.sP_PGF18.Location = new System.Drawing.Point(14, 14);
-            this.sP_PGF18.Name = "sP_PGF18";
-            this.sP_PGF18.Rows = 0;
-            this.sP_PGF18.Size = new System.Drawing.Size(340, 195);
-            this.sP_PGF18.SubControlLocation = new System.Drawing.Point(3, 48);
-            this.sP_PGF18.TabIndex = 0;
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.DarkRed;
+            this.label2.Location = new System.Drawing.Point(268, 456);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(223, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Had to remove some of the \"reserved\" values";
             // 
             // label1
             // 
@@ -340,15 +197,170 @@ namespace PXR_Tool
     "rved bytes and it still seems 2 bytes short\r\nEngine (ATS) Test Duration value is" +
     " currently the checksum value.";
             // 
-            // label2
+            // sP_PGF1
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.DarkRed;
-            this.label2.Location = new System.Drawing.Point(205, 457);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(223, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Had to remove some of the \"reserved\" values";
+            this.sP_PGF1.BufferByte = ((byte)(1));
+            this.sP_PGF1.Column = 2;
+            this.sP_PGF1.Location = new System.Drawing.Point(498, 30);
+            this.sP_PGF1.Name = "sP_PGF1";
+            this.sP_PGF1.Rows = 0;
+            this.sP_PGF1.Size = new System.Drawing.Size(364, 375);
+            this.sP_PGF1.SubControlLocation = new System.Drawing.Point(3, 48);
+            this.sP_PGF1.TabIndex = 1;
+            // 
+            // sP_PGF0
+            // 
+            this.sP_PGF0.BufferByte = ((byte)(0));
+            this.sP_PGF0.Column = 2;
+            this.sP_PGF0.Location = new System.Drawing.Point(16, 30);
+            this.sP_PGF0.Name = "sP_PGF0";
+            this.sP_PGF0.Rows = 0;
+            this.sP_PGF0.Size = new System.Drawing.Size(424, 375);
+            this.sP_PGF0.SubControlLocation = new System.Drawing.Point(3, 48);
+            this.sP_PGF0.TabIndex = 0;
+            // 
+            // sP_PGF4
+            // 
+            this.sP_PGF4.BufferByte = ((byte)(5));
+            this.sP_PGF4.Column = 2;
+            this.sP_PGF4.Location = new System.Drawing.Point(454, 145);
+            this.sP_PGF4.Name = "sP_PGF4";
+            this.sP_PGF4.Rows = 0;
+            this.sP_PGF4.Size = new System.Drawing.Size(454, 375);
+            this.sP_PGF4.SubControlLocation = new System.Drawing.Point(3, 48);
+            this.sP_PGF4.TabIndex = 2;
+            // 
+            // sP_PGF3
+            // 
+            this.sP_PGF3.BufferByte = ((byte)(3));
+            this.sP_PGF3.Column = 2;
+            this.sP_PGF3.Location = new System.Drawing.Point(27, 145);
+            this.sP_PGF3.Name = "sP_PGF3";
+            this.sP_PGF3.Rows = 0;
+            this.sP_PGF3.Size = new System.Drawing.Size(386, 294);
+            this.sP_PGF3.SubControlLocation = new System.Drawing.Point(3, 48);
+            this.sP_PGF3.TabIndex = 1;
+            // 
+            // sP_PGF2
+            // 
+            this.sP_PGF2.BufferByte = ((byte)(2));
+            this.sP_PGF2.Column = 2;
+            this.sP_PGF2.Location = new System.Drawing.Point(27, 6);
+            this.sP_PGF2.Name = "sP_PGF2";
+            this.sP_PGF2.Rows = 0;
+            this.sP_PGF2.Size = new System.Drawing.Size(386, 105);
+            this.sP_PGF2.SubControlLocation = new System.Drawing.Point(3, 48);
+            this.sP_PGF2.TabIndex = 0;
+            // 
+            // sP_PGF10
+            // 
+            this.sP_PGF10.BufferByte = ((byte)(10));
+            this.sP_PGF10.Column = 3;
+            this.sP_PGF10.Location = new System.Drawing.Point(13, 17);
+            this.sP_PGF10.Name = "sP_PGF10";
+            this.sP_PGF10.Rows = 0;
+            this.sP_PGF10.Size = new System.Drawing.Size(759, 402);
+            this.sP_PGF10.SubControlLocation = new System.Drawing.Point(3, 48);
+            this.sP_PGF10.TabIndex = 2;
+            // 
+            // sP_PGF5
+            // 
+            this.sP_PGF5.BufferByte = ((byte)(11));
+            this.sP_PGF5.Column = 3;
+            this.sP_PGF5.Location = new System.Drawing.Point(14, 13);
+            this.sP_PGF5.Name = "sP_PGF5";
+            this.sP_PGF5.Rows = 0;
+            this.sP_PGF5.Size = new System.Drawing.Size(609, 348);
+            this.sP_PGF5.SubControlLocation = new System.Drawing.Point(3, 48);
+            this.sP_PGF5.TabIndex = 0;
+            // 
+            // sP_PGF15
+            // 
+            this.sP_PGF15.BufferByte = ((byte)(15));
+            this.sP_PGF15.Column = 2;
+            this.sP_PGF15.Location = new System.Drawing.Point(493, 130);
+            this.sP_PGF15.Name = "sP_PGF15";
+            this.sP_PGF15.Rows = 0;
+            this.sP_PGF15.Size = new System.Drawing.Size(524, 510);
+            this.sP_PGF15.SubControlLocation = new System.Drawing.Point(3, 48);
+            this.sP_PGF15.TabIndex = 3;
+            // 
+            // sP_PGF14
+            // 
+            this.sP_PGF14.BufferByte = ((byte)(14));
+            this.sP_PGF14.Column = 2;
+            this.sP_PGF14.Location = new System.Drawing.Point(15, 356);
+            this.sP_PGF14.Name = "sP_PGF14";
+            this.sP_PGF14.Rows = 0;
+            this.sP_PGF14.Size = new System.Drawing.Size(380, 186);
+            this.sP_PGF14.SubControlLocation = new System.Drawing.Point(3, 48);
+            this.sP_PGF14.TabIndex = 2;
+            // 
+            // sP_PGF13
+            // 
+            this.sP_PGF13.BufferByte = ((byte)(13));
+            this.sP_PGF13.Column = 2;
+            this.sP_PGF13.Location = new System.Drawing.Point(15, 6);
+            this.sP_PGF13.Name = "sP_PGF13";
+            this.sP_PGF13.Rows = 0;
+            this.sP_PGF13.Size = new System.Drawing.Size(386, 294);
+            this.sP_PGF13.SubControlLocation = new System.Drawing.Point(3, 48);
+            this.sP_PGF13.TabIndex = 1;
+            // 
+            // sP_PGF12
+            // 
+            this.sP_PGF12.BufferByte = ((byte)(12));
+            this.sP_PGF12.Column = 2;
+            this.sP_PGF12.Location = new System.Drawing.Point(444, 6);
+            this.sP_PGF12.Name = "sP_PGF12";
+            this.sP_PGF12.Rows = 0;
+            this.sP_PGF12.Size = new System.Drawing.Size(398, 105);
+            this.sP_PGF12.SubControlLocation = new System.Drawing.Point(3, 48);
+            this.sP_PGF12.TabIndex = 0;
+            // 
+            // sP_PGF7
+            // 
+            this.sP_PGF7.BufferByte = ((byte)(17));
+            this.sP_PGF7.Column = 3;
+            this.sP_PGF7.Location = new System.Drawing.Point(49, 376);
+            this.sP_PGF7.Name = "sP_PGF7";
+            this.sP_PGF7.Rows = 0;
+            this.sP_PGF7.Size = new System.Drawing.Size(699, 186);
+            this.sP_PGF7.SubControlLocation = new System.Drawing.Point(3, 48);
+            this.sP_PGF7.TabIndex = 1;
+            // 
+            // sP_PGF6
+            // 
+            this.sP_PGF6.BufferByte = ((byte)(16));
+            this.sP_PGF6.Column = 3;
+            this.sP_PGF6.Location = new System.Drawing.Point(17, 30);
+            this.sP_PGF6.Name = "sP_PGF6";
+            this.sP_PGF6.Rows = 0;
+            this.sP_PGF6.Size = new System.Drawing.Size(777, 321);
+            this.sP_PGF6.SubControlLocation = new System.Drawing.Point(3, 48);
+            this.sP_PGF6.TabIndex = 0;
+            // 
+            // sP_PGF19
+            // 
+            this.sP_PGF19.BufferByte = ((byte)(19));
+            this.sP_PGF19.Column = 4;
+            this.sP_PGF19.Location = new System.Drawing.Point(14, 437);
+            this.sP_PGF19.Name = "sP_PGF19";
+            this.sP_PGF19.Rows = 0;
+            this.sP_PGF19.Size = new System.Drawing.Size(916, 159);
+            this.sP_PGF19.SubControlLocation = new System.Drawing.Point(3, 48);
+            this.sP_PGF19.TabIndex = 1;
+            // 
+            // sP_PGF18
+            // 
+            this.sP_PGF18.BufferByte = ((byte)(18));
+            this.sP_PGF18.Column = 4;
+            this.sP_PGF18.Location = new System.Drawing.Point(14, 14);
+            this.sP_PGF18.Name = "sP_PGF18";
+            this.sP_PGF18.Rows = 0;
+            this.sP_PGF18.Size = new System.Drawing.Size(1028, 402);
+            this.sP_PGF18.SubControlLocation = new System.Drawing.Point(3, 48);
+            this.sP_PGF18.TabIndex = 0;
             // 
             // SetpointFrame
             // 
