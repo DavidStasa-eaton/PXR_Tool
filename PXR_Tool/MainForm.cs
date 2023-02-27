@@ -81,8 +81,8 @@ namespace PXR_Tool
         private async Task InitalReads_PD()
         {
             // Rating
-            UniRequest req = connectedDevice.GetConfigPG(PdDeviceInfo.Configurations.Breaker_Rating).ReadRequest();
-            UniResponse res = await AsyncTransaction(req);
+            EtuRequest req = connectedDevice.GetConfigPG(PdDeviceInfo.Configurations.Breaker_Rating).ReadRequest();
+            EtuResponse res = await AsyncTransaction(req);
             if (res.goodResponse)
                 connectedDevice.Rating = res.IntValues[0];
             else
@@ -125,8 +125,8 @@ namespace PXR_Tool
         private async Task InitalReads_ACB()
         {
             // Rating
-            UniRequest req = connectedDevice.GetTestAndCalPG(TokyoDeviceInfo.TestAndCal.BreakerRating_Read).ReadRequest();
-            UniResponse res = await AsyncTransaction(req);
+            EtuRequest req = connectedDevice.GetTestAndCalPG(TokyoDeviceInfo.TestAndCal.BreakerRating_Read).ReadRequest();
+            EtuResponse res = await AsyncTransaction(req);
             if (res.goodResponse)
                 connectedDevice.Rating = res.IntValues[0];
             else
@@ -184,10 +184,10 @@ namespace PXR_Tool
             
         }
 
-        public async Task<UniResponse> AsyncTransaction(UniRequest request)
+        public async Task<EtuResponse> AsyncTransaction(EtuRequest request)
         {
-            if (device == null) return UniResponse.FromNoConnection(request);
-            if (!device.IsConnected) return UniResponse.FromNoConnection(request);
+            if (device == null) return EtuResponse.FromNoConnection(request);
+            if (!device.IsConnected) return EtuResponse.FromNoConnection(request);
 
             return await device.AsyncTransaction(request);
         }
@@ -292,7 +292,7 @@ namespace PXR_Tool
                 passwordString.Substring(3),
             };
 
-            UniResponse response = await AsyncTransaction(connectedDevice.remoteControlDict[14].ActionCheckRequest(writeValues, false));
+            EtuResponse response = await AsyncTransaction(connectedDevice.remoteControlDict[14].ActionCheckRequest(writeValues, false));
 
             inputPasswordButton.ParseBool(response.goodResponse);
         }

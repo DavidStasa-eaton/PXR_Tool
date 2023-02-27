@@ -156,7 +156,7 @@ namespace PXR_Tool
 
     public class PostTransactionEventArgs : EventArgs
     {
-        public UniResponse response { get; set; }
+        public EtuResponse response { get; set; }
     }
 
     public class SizeChangeEventArgs: EventArgs

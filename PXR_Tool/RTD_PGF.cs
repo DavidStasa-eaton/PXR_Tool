@@ -66,7 +66,7 @@ namespace PXR_Tool
             rtdDGV.Rows.Clear();
 
             int height = 20;
-            foreach (UniParameter p in _pGroup.parameters)
+            foreach (EtuParameter p in _pGroup.parameters)
             {
                 int index = rtdDGV.Rows.Add();
 
@@ -84,8 +84,8 @@ namespace PXR_Tool
             if (_pGroup == null) return;
             readButton.WorkStart();
 
-            UniRequest req = _pGroup.ReadRequest();
-            UniResponse response = await MainForm.instance.AsyncTransaction(req);
+            EtuRequest req = _pGroup.ReadRequest();
+            EtuResponse response = await MainForm.instance.AsyncTransaction(req);
             if (response.goodResponse)
             {
                 string[] values = response.Values;

@@ -105,7 +105,7 @@ namespace PXR_Tool
             int index = 0;
 
             longestLabel = 0;
-            foreach (UniParameter p in _pGroup.parameters)
+            foreach (EtuParameter p in _pGroup.parameters)
             {
                 cells.Add(new LabeledCell(p.pName, !_isVertical));
 
@@ -194,8 +194,8 @@ namespace PXR_Tool
             readButton.WorkStart();
             if (_pGroup == null) return;
 
-            UniRequest req = _pGroup.ReadRequest();
-            UniResponse response = await MainForm.instance.AsyncTransaction(req);
+            EtuRequest req = _pGroup.ReadRequest();
+            EtuResponse response = await MainForm.instance.AsyncTransaction(req);
 
             if (response.goodResponse)
             {
@@ -233,8 +233,8 @@ namespace PXR_Tool
                 values[i] = cells[i].Value;
             }
 
-            UniRequest req = _pGroup.WriteRequest(values);
-            UniResponse response = await MainForm.instance.AsyncTransaction(req);
+            EtuRequest req = _pGroup.WriteRequest(values);
+            EtuResponse response = await MainForm.instance.AsyncTransaction(req);
 
             writeButton.ParseBool(response.goodResponse);
         }
