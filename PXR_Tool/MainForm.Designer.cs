@@ -78,7 +78,7 @@ namespace PXR_Tool
             this.mainTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.mainTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.mainTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainTL.Size = new System.Drawing.Size(1457, 757);
+            this.mainTL.Size = new System.Drawing.Size(1457, 961);
             this.mainTL.TabIndex = 1;
             // 
             // comsLog
@@ -101,7 +101,7 @@ namespace PXR_Tool
             this.mainTabControl.Name = "mainTabControl";
             this.mainTL.SetRowSpan(this.mainTabControl, 4);
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(1199, 751);
+            this.mainTabControl.Size = new System.Drawing.Size(1199, 955);
             this.mainTabControl.TabIndex = 3;
             // 
             // rtdTab
@@ -111,7 +111,7 @@ namespace PXR_Tool
             this.rtdTab.Location = new System.Drawing.Point(4, 22);
             this.rtdTab.Name = "rtdTab";
             this.rtdTab.Padding = new System.Windows.Forms.Padding(3);
-            this.rtdTab.Size = new System.Drawing.Size(1191, 725);
+            this.rtdTab.Size = new System.Drawing.Size(1191, 929);
             this.rtdTab.TabIndex = 0;
             this.rtdTab.Text = "Real Time Data";
             // 
@@ -120,7 +120,7 @@ namespace PXR_Tool
             this.rtD_Frame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtD_Frame.Location = new System.Drawing.Point(3, 3);
             this.rtD_Frame.Name = "rtD_Frame";
-            this.rtD_Frame.Size = new System.Drawing.Size(1185, 719);
+            this.rtD_Frame.Size = new System.Drawing.Size(1185, 923);
             this.rtD_Frame.TabIndex = 0;
             // 
             // spTab
@@ -333,7 +333,7 @@ namespace PXR_Tool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1457, 757);
+            this.ClientSize = new System.Drawing.Size(1457, 961);
             this.Controls.Add(this.mainTL);
             this.Name = "MainForm";
             this.Text = "PXR Tool - USB Communications";
