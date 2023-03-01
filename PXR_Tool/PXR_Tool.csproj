@@ -74,6 +74,12 @@
     <Compile Include="DataFrames\KeyValuesDGV.Designer.cs">
       <DependentUpon>KeyValuesDGV.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataFrames\LabledValuesFrame.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataFrames\LabledValuesFrame.Designer.cs">
+      <DependentUpon>LabledValuesFrame.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,9 @@
     </Compile>
     <EmbeddedResource Include="DataFrames\KeyValuesDGV.resx">
       <DependentUpon>KeyValuesDGV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataFrames\LabledValuesFrame.resx">
+      <DependentUpon>LabledValuesFrame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

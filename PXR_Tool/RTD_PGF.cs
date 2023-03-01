@@ -30,8 +30,8 @@ namespace PXR_Tool
 
         private void RTD_PGF_SizeAltered(object sender, SizeChangeEventArgs e)
         {
-            rtdDGV.Location = new Point(e.x, e.y);
-            rtdDGV.Size = new Size(e.width, e.height);
+            keyValuesDGV.Location = new Point(e.x, e.y);
+            keyValuesDGV.Size = new Size(e.width, e.height);
         }
 
         private void Program_DeviceChangedEvent(BroadDeviceChangedEventArgs obj)
@@ -63,20 +63,9 @@ namespace PXR_Tool
 
             groupBox.Text = $"RTD {_pGroup.bufferByte}: {_pGroup.description}";
 
-            rtdDGV.Rows.Clear();
+            Size s = keyValuesDGV.PopulateControl(_pGroup);
 
-            int height = 20;
-            foreach (EtuParameter p in _pGroup.parameters)
-            {
-                int index = rtdDGV.Rows.Add();
-
-                rtdDGV.Rows[index].Cells[0].Value = p.pName;
-                rtdDGV.Rows[index].Cells[1].Value = "-";
-
-                height += rtdDGV.Rows[index].Height;
-            }
-
-            AutoHeight(height);
+            AutoHeight(s.Height + keyValuesDGV.Location.Y);
         }
 
         private async void readButton_Click(object sender, EventArgs e)
@@ -90,20 +79,7 @@ namespace PXR_Tool
             {
                 string[] values = response.Values;
 
-                if (values.Length < rtdDGV.Rows.Count) // More values than rows
-                {
-                    foreach (DataGridViewRow dgvr in rtdDGV.Rows)
-                    {
-                        dgvr.Cells[1].Value = "Length Error";
-                    }
-                }
-                else
-                {
-                    for (int i = 0; i < rtdDGV.Rows.Count; i++)
-                    {
-                        rtdDGV.Rows[i].Cells[1].Value = values[i];
-                    }
-                }
+                keyValuesDGV.UpdateValues(values);
             }
 
             readButton.ParseBool(response.goodResponse);

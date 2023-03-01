@@ -36,6 +36,7 @@ namespace PXR_Tool
             this.rtD_Frame = new PXR_Tool.RTD_Frame();
             this.spTab = new System.Windows.Forms.TabPage();
             this.setpointFrame = new PXR_Tool.SetpointFrame();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.connectedDeviceInfoTL = new System.Windows.Forms.TableLayoutPanel();
             this.typeLabel = new System.Windows.Forms.Label();
             this.ratingLabel = new System.Windows.Forms.Label();
@@ -78,7 +79,7 @@ namespace PXR_Tool
             this.mainTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.mainTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.mainTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainTL.Size = new System.Drawing.Size(1457, 961);
+            this.mainTL.Size = new System.Drawing.Size(1457, 811);
             this.mainTL.TabIndex = 1;
             // 
             // comsLog
@@ -96,12 +97,13 @@ namespace PXR_Tool
             // 
             this.mainTabControl.Controls.Add(this.rtdTab);
             this.mainTabControl.Controls.Add(this.spTab);
+            this.mainTabControl.Controls.Add(this.tabPage1);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.Location = new System.Drawing.Point(255, 3);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTL.SetRowSpan(this.mainTabControl, 4);
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(1199, 955);
+            this.mainTabControl.Size = new System.Drawing.Size(1199, 805);
             this.mainTabControl.TabIndex = 3;
             // 
             // rtdTab
@@ -111,7 +113,7 @@ namespace PXR_Tool
             this.rtdTab.Location = new System.Drawing.Point(4, 22);
             this.rtdTab.Name = "rtdTab";
             this.rtdTab.Padding = new System.Windows.Forms.Padding(3);
-            this.rtdTab.Size = new System.Drawing.Size(1191, 929);
+            this.rtdTab.Size = new System.Drawing.Size(1191, 779);
             this.rtdTab.TabIndex = 0;
             this.rtdTab.Text = "Real Time Data";
             // 
@@ -120,7 +122,7 @@ namespace PXR_Tool
             this.rtD_Frame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtD_Frame.Location = new System.Drawing.Point(3, 3);
             this.rtD_Frame.Name = "rtD_Frame";
-            this.rtD_Frame.Size = new System.Drawing.Size(1185, 923);
+            this.rtD_Frame.Size = new System.Drawing.Size(1185, 773);
             this.rtD_Frame.TabIndex = 0;
             // 
             // spTab
@@ -130,7 +132,7 @@ namespace PXR_Tool
             this.spTab.Location = new System.Drawing.Point(4, 22);
             this.spTab.Name = "spTab";
             this.spTab.Padding = new System.Windows.Forms.Padding(3);
-            this.spTab.Size = new System.Drawing.Size(1191, 725);
+            this.spTab.Size = new System.Drawing.Size(1191, 779);
             this.spTab.TabIndex = 1;
             this.spTab.Text = "Setpoints";
             // 
@@ -140,8 +142,17 @@ namespace PXR_Tool
             this.setpointFrame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.setpointFrame.Location = new System.Drawing.Point(3, 3);
             this.setpointFrame.Name = "setpointFrame";
-            this.setpointFrame.Size = new System.Drawing.Size(1185, 719);
+            this.setpointFrame.Size = new System.Drawing.Size(1185, 773);
             this.setpointFrame.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(1191, 779);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // connectedDeviceInfoTL
             // 
@@ -333,7 +344,7 @@ namespace PXR_Tool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1457, 961);
+            this.ClientSize = new System.Drawing.Size(1457, 811);
             this.Controls.Add(this.mainTL);
             this.Name = "MainForm";
             this.Text = "PXR Tool - USB Communications";
@@ -376,6 +387,7 @@ namespace PXR_Tool
         private System.Windows.Forms.Button inputPasswordButton;
         private System.Windows.Forms.CheckBox autoPasswordCheckbox;
         private System.Windows.Forms.CheckBox autoConnectCheckbox;
+        private System.Windows.Forms.TabPage tabPage1;
     }
 }
 

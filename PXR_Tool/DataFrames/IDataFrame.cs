@@ -12,8 +12,10 @@ namespace PXR_Tool.DataFrames
     {
         ParameterGroup paramGroup {get; set; }
 
-        void PackValues(string[] values);
+        int Count { get; }
+
+        void UpdateValues(string[] values);
         string[] GetValues();
-        void PopulateControl(ParameterGroup pg);
+        System.Drawing.Size PopulateControl(ParameterGroup pg);
     }
 }

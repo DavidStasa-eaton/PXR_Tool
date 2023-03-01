@@ -29,17 +29,17 @@ namespace PXR_Tool
         /// </summary>
         private void InitializeComponent()
         {
-            this.packPanel = new System.Windows.Forms.Panel();
+            this.lvFrame = new PXR_Tool.DataFrames.LabledValuesFrame();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox
             // 
-            this.groupBox.Controls.Add(this.packPanel);
+            this.groupBox.Controls.Add(this.lvFrame);
             this.groupBox.Controls.SetChildIndex(this.readButton, 0);
             this.groupBox.Controls.SetChildIndex(this.secondRefreshButton, 0);
             this.groupBox.Controls.SetChildIndex(this.writeButton, 0);
-            this.groupBox.Controls.SetChildIndex(this.packPanel, 0);
+            this.groupBox.Controls.SetChildIndex(this.lvFrame, 0);
             // 
             // writeButton
             // 
@@ -49,12 +49,16 @@ namespace PXR_Tool
             // 
             this.readButton.Click += new System.EventHandler(this.readButton_Click);
             // 
-            // packPanel
+            // lvFrame
             // 
-            this.packPanel.Location = new System.Drawing.Point(6, 48);
-            this.packPanel.Name = "packPanel";
-            this.packPanel.Size = new System.Drawing.Size(328, 141);
-            this.packPanel.TabIndex = 3;
+            this.lvFrame.Columns = ((uint)(0u));
+            this.lvFrame.Location = new System.Drawing.Point(6, 48);
+            this.lvFrame.Name = "lvFrame";
+            this.lvFrame.paramGroup = null;
+            this.lvFrame.Rows = ((uint)(0u));
+            this.lvFrame.Size = new System.Drawing.Size(328, 147);
+            this.lvFrame.SplitIndex = ((uint)(0u));
+            this.lvFrame.TabIndex = 3;
             // 
             // SP_PGF
             // 
@@ -70,6 +74,6 @@ namespace PXR_Tool
 
         #endregion
 
-        private System.Windows.Forms.Panel packPanel;
+        private DataFrames.LabledValuesFrame lvFrame;
     }
 }

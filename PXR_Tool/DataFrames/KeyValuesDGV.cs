@@ -14,21 +14,33 @@ namespace PXR_Tool.DataFrames
 {
     public partial class KeyValuesDGV : UserControl, IDataFrame
     {
-        public ParameterGroup paramGroup { get; set; }
+        private ParameterGroup _pg;
+        public ParameterGroup paramGroup { get { return _pg; }
+            set
+            {
+                _pg = value;
+                if (_pg != null)
+                    PopulateControl(_pg);
+            }     
+        }
+
+        public int Count { get { return dgv.Rows.Count; } }
+
+        public DataGridView DGV { get { return dgv; } }
 
         public KeyValuesDGV()
         {
             InitializeComponent();
         }
 
-        public void PackValues(string[] values)
+        public void UpdateValues(string[] values)
         {
             if (values.Length == dgv.Rows.Count)
             {
                 int i = 0;
                 foreach (DataGridViewRow dgvr in dgv.Rows)
                 {
-                    dgvr.Cells[0].Value = values[i];
+                    dgvr.Cells[1].Value = values[i];
                     i++;
                 }
             }
@@ -37,10 +49,10 @@ namespace PXR_Tool.DataFrames
                 int i = 0;
                 foreach (DataGridViewRow dgvr in dgv.Rows)
                 {
-                    dgvr.Cells[0].Value = values[i];
+                    dgvr.Cells[1].Value = values[i];
                     i++;
                 }
-                MessageBox.Show($"Number of values ({values.Length}) cannot fit in this data grid ({dgv.Rows})", "Value Count Mismatch",
+                MessageBox.Show($"Number of values ({values.Length}) cannot fit in this data grid ({dgv.Rows.Count})", "Value Count Mismatch",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else // More rows than values
@@ -48,13 +60,13 @@ namespace PXR_Tool.DataFrames
                 int i = 0;
                 foreach (string val in values)
                 {
-                    dgv.Rows[i].Cells[0].Value = values[i];
+                    dgv.Rows[i].Cells[1].Value = values[i];
                     i++;
                 }
 
                 for (int j=i; j < dgv.Rows.Count; j++)
                 {
-                    dgv.Rows[i].Cells[0].Value = "! No Data !";
+                    dgv.Rows[i].Cells[1].Value = "! No Data !";
                 }
             }
 
@@ -74,16 +86,22 @@ namespace PXR_Tool.DataFrames
             return values;
         }
 
-        public void PopulateControl(ParameterGroup pg)
+        public Size PopulateControl(ParameterGroup pg)
         {
-            paramGroup = pg;
+            _pg = pg;
 
+            dgv.Rows.Clear();
+            int height = 20;
             foreach (EtuParameter p in pg.parameters)
             {
                 int index = dgv.Rows.Add();
                 dgv.Rows[index].Cells[0].Value = p.pName;
                 dgv.Rows[index].Cells[1].Value = "-";
+
+                height += dgv.Rows[index].Height;
             }
+
+            return new Size(dgv.PreferredSize.Width, dgv.PreferredSize.Height - 25);
         }
     }
 }

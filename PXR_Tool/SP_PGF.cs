@@ -17,55 +17,44 @@ namespace PXR_Tool
     {
         private bool _isVertical = false;
 
-        // Rows is the last thing to be set (based on testing)
-        // Do not want pack cells mutliple times on startup
-        // This flag will prevent cells from paking until all props are set. 
-        private bool _allSet = false;  
-
-        private int _rows = 0;
-        public int Rows { get { return _rows; }
+        private uint _rows = 0;
+        public uint Rows { get { return _rows; }
             set
             {
                 _rows = value;
-                _allSet = true;
-                if (value > 0)
-                {
-                    _isVertical = false;
-                    PackCells();
-                }
+                lvFrame.Rows = _rows;
                 
                 
             }
         }
 
-        private int _columns = 0;
-        public int Column
+        private uint _columns = 0;
+        public uint Column
         {
             get { return _columns; }
             set
             {
                 _columns = value;
-                if (value > 0)
-                {
-                    _isVertical = true;
-                    _rows = 0;
-                    PackCells();
-                }
+                lvFrame.Columns = _columns;
             }
         }
 
-        private int longestLabel = 0;
-
-        private List<LabeledCell> cells;
-
-        private Point _packCellPosition = new Point(3, 3);
+        private uint _splitIndex = 0;
+        public uint SplitIndex
+        {
+            get { return _splitIndex; }
+            set
+            {
+                _splitIndex = value;
+                lvFrame.SplitIndex = _splitIndex;
+            }
+        }
 
         public SP_PGF()
         {
             InitializeComponent();
 
             CheckIfDesignMode();
-            cells = new List<LabeledCell>();
 
             SizeAltered += SP_PGF_SizeAltered;
             Program.DeviceChangedEvent += Program_DeviceChangedEvent;
@@ -78,89 +67,9 @@ namespace PXR_Tool
 
         private void SP_PGF_SizeAltered(object sender, SizeChangeEventArgs e)
         {
-            packPanel.Location = new Point(e.x, e.y);
-            packPanel.Size = new Size(e.width, e.height);
+            lvFrame.Location = new Point(e.x, e.y);
+            lvFrame.Size = new Size(e.width, e.height);
         }
-
-        /// <summary>
-        /// Remove cells from control
-        /// </summary>
-        private void UnpackCells()
-        {
-            foreach (LabeledCell lc in cells)
-            {
-                packPanel.Controls.Remove(lc);
-            }
-            _packCellPosition = new Point(3, 3);
-        }
-
-        /// <summary>
-        /// Creates controls to pack
-        /// </summary>
-        private void UpdateCells()
-        {
-            if (cells.Count > 0)
-                cells.Clear();
-
-            int index = 0;
-
-            longestLabel = 0;
-            foreach (EtuParameter p in _pGroup.parameters)
-            {
-                cells.Add(new LabeledCell(p.pName, !_isVertical));
-
-                if (cells[index].LabelWidth > longestLabel)
-                    longestLabel = cells[index].LabelWidth;
-
-                index++;
-            }
-        }
-
-        /// <summary>
-        /// Packs cells into control
-        /// cells must be populated already.
-        /// </summary>
-        private void PackCells()
-        {
-            //if (!_allSet) return;
-
-            if (_pGroup == null) return;
-
-            PackVertical();
-        }
-
-        private void PackVertical()
-        {
-            if (_columns == 0) return;
-
-            int splitIndex = (int)Math.Ceiling((double)cells.Count / _columns);
-
-            int packCount = 0;
-            int highest = 0;
-            foreach (LabeledCell lc in cells)
-            {
-                lc.SetLabelWidth(longestLabel);
-
-                lc.Location = _packCellPosition;
-                packPanel.Controls.Add(lc);
-
-                packCount++;
-                if (packCount < splitIndex) // Remain in same column
-                {
-                    _packCellPosition = new Point(_packCellPosition.X, _packCellPosition.Y + lc.Height + 3); // keep x pos. Add height of control + padding to next control.
-                    
-                }
-                else
-                {
-                    if (highest < _packCellPosition.Y) highest = _packCellPosition.Y + lc.Height + 3;
-                    _packCellPosition = new Point(_packCellPosition.X + lc.Width + 20, 3); // Reset Y position. Add longest to to X pos
-                    packCount = 0;
-                }
-            }
-            AdjustSize(_columns * cells[0].Width + _columns * 20, highest + packPanel.Location.Y);
-        }
-
-        
 
         public override void UpdateParmeterGroup()
         {
@@ -184,9 +93,8 @@ namespace PXR_Tool
 
             groupBox.Text = $"Group {_pGroup.bufferByte}: {_pGroup.description}";
 
-            UnpackCells();
-            UpdateCells();
-            PackCells();
+            Size s = lvFrame.PopulateControl(_pGroup);
+            AdjustSize(new Size(s.Width + 10, s.Height + lvFrame.Location.Y + 5));
         }
 
         private async void readButton_Click(object sender, EventArgs e)
@@ -199,18 +107,7 @@ namespace PXR_Tool
 
             if (response.goodResponse)
             {
-                string[] values = response.Values;
-
-                if (values.Length != cells.Count)
-                {
-                    // Display error
-                    return;
-                }
-
-                for (int i = 0; i < cells.Count; i++)
-                {
-                    cells[i].Set(values[i]);
-                }
+                lvFrame.UpdateValues(response.Values);
             }
 
             readButton.ParseBool(response.goodResponse);
@@ -226,12 +123,7 @@ namespace PXR_Tool
             writeButton.WorkStart();
             if (_pGroup == null) return;
 
-            string[] values = new string[_pGroup.parameters.Length];
-
-            for (int i = 0; i < values.Length; i++)
-            {
-                values[i] = cells[i].Value;
-            }
+            string[] values = lvFrame.GetValues();
 
             EtuRequest req = _pGroup.WriteRequest(values);
             EtuResponse response = await MainForm.instance.AsyncTransaction(req);

@@ -131,20 +131,24 @@ namespace PXR_Tool
         {
             SizeChangeEventArgs scea = new SizeChangeEventArgs() { x = _subControlLocation.X, y = _subControlLocation.Y };
 
-            Size = new Size(Size.Width, subControl.Height + scea.y + 5);
+            Size = new Size(Size.Width, subControl.Height);
         }
 
         protected void AutoHeight(int subHeight)
         {
             SizeChangeEventArgs scea = new SizeChangeEventArgs();
 
-            Size = new Size(Size.Width, subHeight + scea.y + 5);
+            Size = new Size(Size.Width, subHeight);
         }
     
         protected void AdjustSize(int width, int height)
         {
-            Size = new Size(width, height);
+            AdjustSize(new Size(width, height));
+        }
 
+        protected void AdjustSize(Size s)
+        {
+            Size = s;
             writeButton.Location = new Point(Size.Width - (writeButton.Size.Width + 20), writeButton.Location.Y);
         }
 
