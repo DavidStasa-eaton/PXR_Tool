@@ -67,6 +67,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataFrames\IDataFrame.cs" />
+    <Compile Include="DataFrames\KeyValuesDGV.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataFrames\KeyValuesDGV.Designer.cs">
+      <DependentUpon>KeyValuesDGV.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +113,9 @@
     <Compile Include="SP_PGF.Designer.cs">
       <DependentUpon>SP_PGF.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DataFrames\KeyValuesDGV.resx">
+      <DependentUpon>KeyValuesDGV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
