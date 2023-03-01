@@ -29,7 +29,7 @@ namespace PXR_Tool
         /// </summary>
         private void InitializeComponent()
         {
-            this.lvFrame = new PXR_Tool.DataFrames.LabledValuesFrame();
+            this.lvFrame = new StasaLibrary.DataFrames.LabledValuesFrame();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +56,7 @@ namespace PXR_Tool
             this.lvFrame.Name = "lvFrame";
             this.lvFrame.paramGroup = null;
             this.lvFrame.Rows = ((uint)(0u));
-            this.lvFrame.Size = new System.Drawing.Size(328, 147);
+            this.lvFrame.Size = new System.Drawing.Size(328, 141);
             this.lvFrame.SplitIndex = ((uint)(0u));
             this.lvFrame.TabIndex = 3;
             // 
@@ -74,6 +74,6 @@ namespace PXR_Tool
 
         #endregion
 
-        private DataFrames.LabledValuesFrame lvFrame;
+        private StasaLibrary.DataFrames.LabledValuesFrame lvFrame;
     }
 }

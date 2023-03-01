@@ -29,7 +29,7 @@ namespace PXR_Tool
         /// </summary>
         private void InitializeComponent()
         {
-            this.keyValuesDGV = new PXR_Tool.DataFrames.KeyValuesDGV();
+            this.keyValuesDGV = new StasaLibrary.DataFrames.KeyValuesDGV();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,11 +51,11 @@ namespace PXR_Tool
             // 
             // keyValuesDGV
             // 
-            this.keyValuesDGV.Location = new System.Drawing.Point(6, 63);
+            this.keyValuesDGV.Location = new System.Drawing.Point(6, 48);
             this.keyValuesDGV.Name = "keyValuesDGV";
             this.keyValuesDGV.paramGroup = null;
-            this.keyValuesDGV.Size = new System.Drawing.Size(331, 126);
-            this.keyValuesDGV.TabIndex = 4;
+            this.keyValuesDGV.Size = new System.Drawing.Size(328, 141);
+            this.keyValuesDGV.TabIndex = 3;
             // 
             // RTD_PGF
             // 
@@ -69,6 +69,7 @@ namespace PXR_Tool
         }
 
         #endregion
-        private DataFrames.KeyValuesDGV keyValuesDGV;
+
+        private StasaLibrary.DataFrames.KeyValuesDGV keyValuesDGV;
     }
 }
