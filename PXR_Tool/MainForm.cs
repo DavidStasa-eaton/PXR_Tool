@@ -47,6 +47,11 @@ namespace PXR_Tool
             connMenu.WindowsMessage(ref m);
         }
 
+        /// <summary>
+        /// Called when a device is connected. Will perform some inital reads
+        /// TODO: Will detemien precise etu type after reads
+        /// </summary>
+        /// <param name="obj"></param>
         private async void Device_ConnectedEvent(ConnectionEventArgs obj)
         {
             switch (connMenu.SelectedPortFrame.SelectedComDevice.deviceType)
@@ -187,7 +192,7 @@ namespace PXR_Tool
             return await device.AsyncTransaction(request);
         }
 
-        public void ChangeDeviceType(ComDevice.BroadDeviceType newType)
+        public void ChangeBroadDeviceType(ComDevice.BroadDeviceType newType)
         {
             switch (newType)
             {
@@ -202,11 +207,13 @@ namespace PXR_Tool
                     break;
 
             }
+
+            remoteControlMaster.BindDeviceType(Program.currentBDT);
         }
 
         private void selectPortConnectFrame_RowClickedEvent(object sender, StasaLibrary.SelectConnection.RowClickedEventArgs e)
         {
-            ChangeDeviceType(e.comDevice.deviceType);
+            ChangeBroadDeviceType(e.comDevice.deviceType);
         }
 
         private void MainForm_Load(object sender, EventArgs e)                      /// ON START

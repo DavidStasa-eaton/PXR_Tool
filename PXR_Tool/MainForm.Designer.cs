@@ -33,10 +33,8 @@ namespace PXR_Tool
             this.comsLog = new StasaLibrary.ComsLog();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.rtdTab = new System.Windows.Forms.TabPage();
-            this.rtD_Frame = new PXR_Tool.RTD_Frame();
             this.spTab = new System.Windows.Forms.TabPage();
-            this.setpointFrame = new PXR_Tool.SetpointFrame();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.remoteControlTab = new System.Windows.Forms.TabPage();
             this.connectedDeviceInfoTL = new System.Windows.Forms.TableLayoutPanel();
             this.typeLabel = new System.Windows.Forms.Label();
             this.ratingLabel = new System.Windows.Forms.Label();
@@ -52,10 +50,14 @@ namespace PXR_Tool
             this.setPasswordButton = new System.Windows.Forms.Button();
             this.passwordTextbox = new System.Windows.Forms.TextBox();
             this.inputPasswordButton = new System.Windows.Forms.Button();
+            this.rtD_Frame = new PXR_Tool.RTD_Frame();
+            this.setpointFrame = new PXR_Tool.SetpointFrame();
+            this.remoteControlMaster = new PXR_Tool.RemoteControl.RemoteControlMaster();
             this.mainTL.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.rtdTab.SuspendLayout();
             this.spTab.SuspendLayout();
+            this.remoteControlTab.SuspendLayout();
             this.connectedDeviceInfoTL.SuspendLayout();
             this.connPanel.SuspendLayout();
             this.passwordGroupbox.SuspendLayout();
@@ -79,7 +81,7 @@ namespace PXR_Tool
             this.mainTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.mainTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.mainTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainTL.Size = new System.Drawing.Size(1457, 811);
+            this.mainTL.Size = new System.Drawing.Size(1584, 811);
             this.mainTL.TabIndex = 1;
             // 
             // comsLog
@@ -97,13 +99,15 @@ namespace PXR_Tool
             // 
             this.mainTabControl.Controls.Add(this.rtdTab);
             this.mainTabControl.Controls.Add(this.spTab);
-            this.mainTabControl.Controls.Add(this.tabPage1);
+            this.mainTabControl.Controls.Add(this.remoteControlTab);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainTabControl.HotTrack = true;
             this.mainTabControl.Location = new System.Drawing.Point(255, 3);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTL.SetRowSpan(this.mainTabControl, 4);
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(1199, 805);
+            this.mainTabControl.Size = new System.Drawing.Size(1326, 805);
+            this.mainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.mainTabControl.TabIndex = 3;
             // 
             // rtdTab
@@ -113,17 +117,9 @@ namespace PXR_Tool
             this.rtdTab.Location = new System.Drawing.Point(4, 22);
             this.rtdTab.Name = "rtdTab";
             this.rtdTab.Padding = new System.Windows.Forms.Padding(3);
-            this.rtdTab.Size = new System.Drawing.Size(1191, 779);
+            this.rtdTab.Size = new System.Drawing.Size(1318, 779);
             this.rtdTab.TabIndex = 0;
             this.rtdTab.Text = "Real Time Data";
-            // 
-            // rtD_Frame
-            // 
-            this.rtD_Frame.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtD_Frame.Location = new System.Drawing.Point(3, 3);
-            this.rtD_Frame.Name = "rtD_Frame";
-            this.rtD_Frame.Size = new System.Drawing.Size(1185, 773);
-            this.rtD_Frame.TabIndex = 0;
             // 
             // spTab
             // 
@@ -136,23 +132,15 @@ namespace PXR_Tool
             this.spTab.TabIndex = 1;
             this.spTab.Text = "Setpoints";
             // 
-            // setpointFrame
+            // remoteControlTab
             // 
-            this.setpointFrame.BackColor = System.Drawing.Color.Silver;
-            this.setpointFrame.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.setpointFrame.Location = new System.Drawing.Point(3, 3);
-            this.setpointFrame.Name = "setpointFrame";
-            this.setpointFrame.Size = new System.Drawing.Size(1185, 773);
-            this.setpointFrame.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1191, 779);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.remoteControlTab.BackColor = System.Drawing.Color.Silver;
+            this.remoteControlTab.Controls.Add(this.remoteControlMaster);
+            this.remoteControlTab.Location = new System.Drawing.Point(4, 22);
+            this.remoteControlTab.Name = "remoteControlTab";
+            this.remoteControlTab.Size = new System.Drawing.Size(1318, 779);
+            this.remoteControlTab.TabIndex = 2;
+            this.remoteControlTab.Text = "Remote Control";
             // 
             // connectedDeviceInfoTL
             // 
@@ -340,11 +328,36 @@ namespace PXR_Tool
             this.inputPasswordButton.UseVisualStyleBackColor = true;
             this.inputPasswordButton.Click += new System.EventHandler(this.inputPasswordButton_Click);
             // 
+            // rtD_Frame
+            // 
+            this.rtD_Frame.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtD_Frame.Location = new System.Drawing.Point(3, 3);
+            this.rtD_Frame.Name = "rtD_Frame";
+            this.rtD_Frame.Size = new System.Drawing.Size(1312, 773);
+            this.rtD_Frame.TabIndex = 0;
+            // 
+            // setpointFrame
+            // 
+            this.setpointFrame.BackColor = System.Drawing.Color.Silver;
+            this.setpointFrame.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.setpointFrame.Location = new System.Drawing.Point(3, 3);
+            this.setpointFrame.Name = "setpointFrame";
+            this.setpointFrame.Size = new System.Drawing.Size(1185, 773);
+            this.setpointFrame.TabIndex = 0;
+            // 
+            // remoteControlMaster
+            // 
+            this.remoteControlMaster.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.remoteControlMaster.Location = new System.Drawing.Point(0, 0);
+            this.remoteControlMaster.Name = "remoteControlMaster";
+            this.remoteControlMaster.Size = new System.Drawing.Size(1318, 779);
+            this.remoteControlMaster.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1457, 811);
+            this.ClientSize = new System.Drawing.Size(1584, 811);
             this.Controls.Add(this.mainTL);
             this.Name = "MainForm";
             this.Text = "PXR Tool - USB Communications";
@@ -354,6 +367,7 @@ namespace PXR_Tool
             this.mainTabControl.ResumeLayout(false);
             this.rtdTab.ResumeLayout(false);
             this.spTab.ResumeLayout(false);
+            this.remoteControlTab.ResumeLayout(false);
             this.connectedDeviceInfoTL.ResumeLayout(false);
             this.connectedDeviceInfoTL.PerformLayout();
             this.connPanel.ResumeLayout(false);
@@ -387,7 +401,8 @@ namespace PXR_Tool
         private System.Windows.Forms.Button inputPasswordButton;
         private System.Windows.Forms.CheckBox autoPasswordCheckbox;
         private System.Windows.Forms.CheckBox autoConnectCheckbox;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage remoteControlTab;
+        private RemoteControl.RemoteControlMaster remoteControlMaster;
     }
 }
 
