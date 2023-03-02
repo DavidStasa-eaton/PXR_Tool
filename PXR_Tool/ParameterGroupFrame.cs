@@ -45,7 +45,7 @@ namespace PXR_Tool
         public bool IsReadOnly { get { return _isReadOnly; }
             set
             {
-                _isReadOnly = true;
+                _isReadOnly = value;
                 ToggleReadOnly();
             }
         }
