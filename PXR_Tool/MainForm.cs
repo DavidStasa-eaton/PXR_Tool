@@ -37,8 +37,6 @@ namespace PXR_Tool
             device.DisconnectEvent += Device_DisconnectEvent;
 
             connMenu.portChecker.PortStateChanged += Handle_PortStateChange;
-
-            //LoadInfo_PDPXR25();
         }
 
         protected override void WndProc(ref Message m)
@@ -47,6 +45,12 @@ namespace PXR_Tool
             connMenu.WindowsMessage(ref m);
         }
 
+        private void Handle_PortStateChange(PortStateChangeArgs psca)
+        {
+            connMenu.selectedPortFrame.UpdateComPortList(psca.comDevicesFound);
+        }
+
+        #region Inital Reads and Connection Event
         /// <summary>
         /// Called when a device is connected. Will perform some inital reads
         /// TODO: Will detemien precise etu type after reads
@@ -71,6 +75,9 @@ namespace PXR_Tool
             }
         }
 
+        /// <summary>
+        /// Updates lables below connect frame with connected device info
+        /// </summary>
         private void UpdateConnectedDeviceInfo()
         {
             ratingLabel.Text = connectedDevice.Rating.ToString();
@@ -183,7 +190,9 @@ namespace PXR_Tool
         {
             
         }
+        #endregion __Inital Reads and Connection Event__
 
+        #region Transactions
         public async Task<EtuResponse> AsyncTransaction(EtuRequest request)
         {
             if (device == null) return EtuResponse.FromNoConnection(request);
@@ -192,30 +201,25 @@ namespace PXR_Tool
             return await device.AsyncTransaction(request);
         }
 
-        public void ChangeBroadDeviceType(ComDevice.BroadDeviceType newType)
+        private async void inputPasswordButton_Click(object sender, EventArgs e)
         {
-            switch (newType)
+            inputPasswordButton.WorkStart();
+            string passwordString = passwordTextbox.Text.PadLeft(4, '0');
+            string[] writeValues = new string[]
             {
-                case ComDevice.BroadDeviceType.ACB:
-                    Program.ChangeDeviceType(DeviceDiscovery.DeviceType.Tokyo);
-                    break;
-                case ComDevice.BroadDeviceType.PD:
-                    Program.ChangeDeviceType(DeviceDiscovery.DeviceType.PdPxr25);
-                    break;
-                default:
-                    Program.ChangeDeviceType(DeviceDiscovery.DeviceType.Pxr35);
-                    break;
+                passwordString.Substring(0),
+                passwordString.Substring(1),
+                passwordString.Substring(2),
+                passwordString.Substring(3),
+            };
 
-            }
+            EtuResponse response = await AsyncTransaction(connectedDevice.remoteControlDict[14].ActionCheckRequest(writeValues, false));
 
-            remoteControlMaster.BindDeviceType(Program.currentBDT);
+            inputPasswordButton.ParseBool(response.goodResponse);
         }
+        #endregion __Transactions__
 
-        private void selectPortConnectFrame_RowClickedEvent(object sender, StasaLibrary.SelectConnection.RowClickedEventArgs e)
-        {
-            ChangeBroadDeviceType(e.comDevice.deviceType);
-        }
-
+        #region Form Loading and Closing
         private void MainForm_Load(object sender, EventArgs e)                      /// ON START
         {
             List<ComDevice> cds = connMenu.portChecker.CheckComPorts();
@@ -250,10 +254,9 @@ namespace PXR_Tool
                     if (anyDevice)
                         connMenu.Connect();
                 }
-                    
-
-                
             }
+
+            byteParseRTB_TextChanged(null, null); // Have placeholder values in textbox as an example. this will cause DGV to populate. 
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)    /// ON CLOSING
@@ -275,36 +278,101 @@ namespace PXR_Tool
             string rText = JsonConvert.SerializeObject(ri);
             File.WriteAllText(RestoreInfoPath, rText);
         }
+        #endregion __Form Loading and Closing__
 
-        private void Handle_PortStateChange(PortStateChangeArgs psca)
+        #region Com Port Selection
+        private void selectPortConnectFrame_RowClickedEvent(object sender, StasaLibrary.SelectConnection.RowClickedEventArgs e)
         {
-
-            connMenu.selectedPortFrame.UpdateComPortList(psca.comDevicesFound);
+            ChangeBroadDeviceType(e.comDevice.deviceType);
         }
 
-        private async void inputPasswordButton_Click(object sender, EventArgs e)
+        public void ChangeBroadDeviceType(ComDevice.BroadDeviceType newType)
         {
-            inputPasswordButton.WorkStart();
-            string passwordString = passwordTextbox.Text.PadLeft(4, '0');
-            string[] writeValues = new string[]
+            switch (newType)
             {
-                passwordString.Substring(0),
-                passwordString.Substring(1),
-                passwordString.Substring(2),
-                passwordString.Substring(3),
-            };
+                case ComDevice.BroadDeviceType.ACB:
+                    Program.ChangeDeviceType(DeviceDiscovery.DeviceType.Tokyo);
+                    break;
+                case ComDevice.BroadDeviceType.PD:
+                    Program.ChangeDeviceType(DeviceDiscovery.DeviceType.PdPxr25);
+                    break;
+                default:
+                    Program.ChangeDeviceType(DeviceDiscovery.DeviceType.Pxr35);
+                    break;
 
-            EtuResponse response = await AsyncTransaction(connectedDevice.remoteControlDict[14].ActionCheckRequest(writeValues, false));
+            }
 
-            inputPasswordButton.ParseBool(response.goodResponse);
+            // Contols can subscribe to Program.DeviceChangedEvent to update on change. 
         }
+        #endregion __Com Port Selections
 
         private void autoConnectCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             connMenu.AutoConnect = autoConnectCheckbox.Checked;
         }
 
+        private void clearLogsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            comsLog.ClearAll();
+        }
 
+        private void byteParseRTB_TextChanged(object sender, EventArgs e)
+        {
+            string boxText = byteParseRTB.Text.Trim();
+
+            string[] stringBytes = boxText.Split(' ');
+
+            byteParseDGV.Rows.Clear();
+
+            int messageLength = stringBytes.Length;
+
+            bool isFullMessage = stringBytes[0] == "80" && stringBytes[messageLength-1] == "FD";
+
+            foreach (string b in stringBytes)
+            {
+                if (string.IsNullOrEmpty(b)) continue;
+
+                int rowIndex = byteParseDGV.Rows.Add();
+
+                int intVal = -1;
+                try
+                {
+                    intVal = Convert.ToInt32(b, 16);
+                }
+                catch
+                {
+
+                }
+                
+
+                byteParseDGV.Rows[rowIndex].Cells[0].Value = rowIndex;
+                byteParseDGV.Rows[rowIndex].Cells[1].Value = $"0x{b}";
+                byteParseDGV.Rows[rowIndex].Cells[2].Value = intVal;
+
+                if (isFullMessage)
+                {
+                    bool isResponse = false;
+
+                    if (rowIndex == 0) 
+                        byteParseDGV.Rows[rowIndex].Cells[3].Value = "Start of Packet";
+                    else if (rowIndex == 1)
+                    {
+                        if (intVal == 0) byteParseDGV.Rows[rowIndex].Cells[3].Value = "Read";
+                        else if (intVal == 2) byteParseDGV.Rows[rowIndex].Cells[3].Value = "Write";
+                        else if (intVal == 4) byteParseDGV.Rows[rowIndex].Cells[3].Value = "Action Check";
+                        else isResponse = true;
+                    }
+                    else if (rowIndex == 4 && isResponse)
+                        byteParseDGV.Rows[rowIndex].Cells[3].Value = EtuDevice.GetCorrectnessCodeString(intVal);
+                    else if (rowIndex == messageLength - 3)
+                        byteParseDGV.Rows[rowIndex].Cells[3].Value = "Checksum 1";
+                    else if (rowIndex == messageLength - 2)
+                        byteParseDGV.Rows[rowIndex].Cells[3].Value = "Checksum 2";
+                    else if (rowIndex == messageLength - 1)
+                        byteParseDGV.Rows[rowIndex].Cells[3].Value = "End of Package Designator";
+                }
+            }
+        }
     }
 
     

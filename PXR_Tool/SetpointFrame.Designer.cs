@@ -53,6 +53,8 @@ namespace PXR_Tool
             this.spTabPageG = new System.Windows.Forms.TabPage();
             this.sP_PGF19 = new PXR_Tool.SP_PGF();
             this.sP_PGF18 = new PXR_Tool.SP_PGF();
+            this.spTabPageH = new System.Windows.Forms.TabPage();
+            this.sP_PGF8 = new PXR_Tool.SP_PGF();
             this.spTabControl.SuspendLayout();
             this.spTabPageA.SuspendLayout();
             this.spTabPageB.SuspendLayout();
@@ -62,6 +64,7 @@ namespace PXR_Tool
             this.spTabPageE2.SuspendLayout();
             this.spTabPageF.SuspendLayout();
             this.spTabPageG.SuspendLayout();
+            this.spTabPageH.SuspendLayout();
             this.SuspendLayout();
             // 
             // spTabControl
@@ -75,6 +78,7 @@ namespace PXR_Tool
             this.spTabControl.Controls.Add(this.spTabPageE2);
             this.spTabControl.Controls.Add(this.spTabPageF);
             this.spTabControl.Controls.Add(this.spTabPageG);
+            this.spTabControl.Controls.Add(this.spTabPageH);
             this.spTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spTabControl.HotTrack = true;
             this.spTabControl.ItemSize = new System.Drawing.Size(100, 20);
@@ -221,7 +225,7 @@ namespace PXR_Tool
             this.sP_PGF5.Location = new System.Drawing.Point(14, 13);
             this.sP_PGF5.Name = "sP_PGF5";
             this.sP_PGF5.Rows = ((uint)(0u));
-            this.sP_PGF5.Size = new System.Drawing.Size(734, 380);
+            this.sP_PGF5.Size = new System.Drawing.Size(794, 380);
             this.sP_PGF5.SplitIndex = ((uint)(0u));
             this.sP_PGF5.SubControlLocation = new System.Drawing.Point(3, 48);
             this.sP_PGF5.TabIndex = 0;
@@ -293,12 +297,12 @@ namespace PXR_Tool
             // sP_PGF15
             // 
             this.sP_PGF15.BufferByte = ((byte)(15));
-            this.sP_PGF15.Column = ((uint)(2u));
+            this.sP_PGF15.Column = ((uint)(3u));
             this.sP_PGF15.IsReadOnly = false;
             this.sP_PGF15.Location = new System.Drawing.Point(15, 6);
             this.sP_PGF15.Name = "sP_PGF15";
             this.sP_PGF15.Rows = ((uint)(0u));
-            this.sP_PGF15.Size = new System.Drawing.Size(522, 623);
+            this.sP_PGF15.Size = new System.Drawing.Size(785, 434);
             this.sP_PGF15.SplitIndex = ((uint)(0u));
             this.sP_PGF15.SubControlLocation = new System.Drawing.Point(3, 48);
             this.sP_PGF15.TabIndex = 4;
@@ -379,6 +383,29 @@ namespace PXR_Tool
             this.sP_PGF18.SubControlLocation = new System.Drawing.Point(3, 48);
             this.sP_PGF18.TabIndex = 0;
             // 
+            // spTabPageH
+            // 
+            this.spTabPageH.BackColor = System.Drawing.Color.Silver;
+            this.spTabPageH.Controls.Add(this.sP_PGF8);
+            this.spTabPageH.Location = new System.Drawing.Point(4, 24);
+            this.spTabPageH.Name = "spTabPageH";
+            this.spTabPageH.Size = new System.Drawing.Size(1241, 662);
+            this.spTabPageH.TabIndex = 8;
+            this.spTabPageH.Text = "21";
+            // 
+            // sP_PGF8
+            // 
+            this.sP_PGF8.BufferByte = ((byte)(21));
+            this.sP_PGF8.Column = ((uint)(0u));
+            this.sP_PGF8.IsReadOnly = false;
+            this.sP_PGF8.Location = new System.Drawing.Point(19, 18);
+            this.sP_PGF8.Name = "sP_PGF8";
+            this.sP_PGF8.Rows = ((uint)(0u));
+            this.sP_PGF8.Size = new System.Drawing.Size(424, 271);
+            this.sP_PGF8.SplitIndex = ((uint)(6u));
+            this.sP_PGF8.SubControlLocation = new System.Drawing.Point(3, 48);
+            this.sP_PGF8.TabIndex = 0;
+            // 
             // SetpointFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -396,6 +423,7 @@ namespace PXR_Tool
             this.spTabPageE2.ResumeLayout(false);
             this.spTabPageF.ResumeLayout(false);
             this.spTabPageG.ResumeLayout(false);
+            this.spTabPageH.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -426,5 +454,7 @@ namespace PXR_Tool
         private SP_PGF sP_PGF18;
         private System.Windows.Forms.TabPage spTabPageE2;
         private SP_PGF sP_PGF15;
+        private System.Windows.Forms.TabPage spTabPageH;
+        private SP_PGF sP_PGF8;
     }
 }

@@ -29,12 +29,25 @@ namespace PXR_Tool
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mainTL = new System.Windows.Forms.TableLayoutPanel();
             this.comsLog = new StasaLibrary.ComsLog();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.rtdTab = new System.Windows.Forms.TabPage();
+            this.rtD_Frame = new PXR_Tool.RTD_Frame();
             this.spTab = new System.Windows.Forms.TabPage();
+            this.setpointFrame = new PXR_Tool.SetpointFrame();
             this.remoteControlTab = new System.Windows.Forms.TabPage();
+            this.remoteControlMaster = new PXR_Tool.RemoteControl.RemoteControlMaster();
+            this.messageParseTab = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.byteParseRTB = new System.Windows.Forms.RichTextBox();
+            this.byteParseDGV = new System.Windows.Forms.DataGridView();
+            this.indexCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hexCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.connectedDeviceInfoTL = new System.Windows.Forms.TableLayoutPanel();
             this.typeLabel = new System.Windows.Forms.Label();
             this.ratingLabel = new System.Windows.Forms.Label();
@@ -50,17 +63,20 @@ namespace PXR_Tool
             this.setPasswordButton = new System.Windows.Forms.Button();
             this.passwordTextbox = new System.Windows.Forms.TextBox();
             this.inputPasswordButton = new System.Windows.Forms.Button();
-            this.rtD_Frame = new PXR_Tool.RTD_Frame();
-            this.setpointFrame = new PXR_Tool.SetpointFrame();
-            this.remoteControlMaster = new PXR_Tool.RemoteControl.RemoteControlMaster();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainTL.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.rtdTab.SuspendLayout();
             this.spTab.SuspendLayout();
             this.remoteControlTab.SuspendLayout();
+            this.messageParseTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.byteParseDGV)).BeginInit();
             this.connectedDeviceInfoTL.SuspendLayout();
             this.connPanel.SuspendLayout();
             this.passwordGroupbox.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTL
@@ -74,14 +90,14 @@ namespace PXR_Tool
             this.mainTL.Controls.Add(this.connPanel, 0, 0);
             this.mainTL.Controls.Add(this.passwordGroupbox, 0, 2);
             this.mainTL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainTL.Location = new System.Drawing.Point(0, 0);
+            this.mainTL.Location = new System.Drawing.Point(0, 24);
             this.mainTL.Name = "mainTL";
             this.mainTL.RowCount = 4;
             this.mainTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.mainTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.mainTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.mainTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainTL.Size = new System.Drawing.Size(1584, 811);
+            this.mainTL.Size = new System.Drawing.Size(1584, 787);
             this.mainTL.TabIndex = 1;
             // 
             // comsLog
@@ -100,13 +116,14 @@ namespace PXR_Tool
             this.mainTabControl.Controls.Add(this.rtdTab);
             this.mainTabControl.Controls.Add(this.spTab);
             this.mainTabControl.Controls.Add(this.remoteControlTab);
+            this.mainTabControl.Controls.Add(this.messageParseTab);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.HotTrack = true;
             this.mainTabControl.Location = new System.Drawing.Point(255, 3);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTL.SetRowSpan(this.mainTabControl, 4);
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(1326, 805);
+            this.mainTabControl.Size = new System.Drawing.Size(1326, 781);
             this.mainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.mainTabControl.TabIndex = 3;
             // 
@@ -117,9 +134,17 @@ namespace PXR_Tool
             this.rtdTab.Location = new System.Drawing.Point(4, 22);
             this.rtdTab.Name = "rtdTab";
             this.rtdTab.Padding = new System.Windows.Forms.Padding(3);
-            this.rtdTab.Size = new System.Drawing.Size(1318, 779);
+            this.rtdTab.Size = new System.Drawing.Size(1318, 755);
             this.rtdTab.TabIndex = 0;
             this.rtdTab.Text = "Real Time Data";
+            // 
+            // rtD_Frame
+            // 
+            this.rtD_Frame.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtD_Frame.Location = new System.Drawing.Point(3, 3);
+            this.rtD_Frame.Name = "rtD_Frame";
+            this.rtD_Frame.Size = new System.Drawing.Size(1312, 749);
+            this.rtD_Frame.TabIndex = 0;
             // 
             // spTab
             // 
@@ -128,9 +153,18 @@ namespace PXR_Tool
             this.spTab.Location = new System.Drawing.Point(4, 22);
             this.spTab.Name = "spTab";
             this.spTab.Padding = new System.Windows.Forms.Padding(3);
-            this.spTab.Size = new System.Drawing.Size(1191, 779);
+            this.spTab.Size = new System.Drawing.Size(1318, 755);
             this.spTab.TabIndex = 1;
             this.spTab.Text = "Setpoints";
+            // 
+            // setpointFrame
+            // 
+            this.setpointFrame.BackColor = System.Drawing.Color.Silver;
+            this.setpointFrame.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.setpointFrame.Location = new System.Drawing.Point(3, 3);
+            this.setpointFrame.Name = "setpointFrame";
+            this.setpointFrame.Size = new System.Drawing.Size(1312, 749);
+            this.setpointFrame.TabIndex = 0;
             // 
             // remoteControlTab
             // 
@@ -138,9 +172,108 @@ namespace PXR_Tool
             this.remoteControlTab.Controls.Add(this.remoteControlMaster);
             this.remoteControlTab.Location = new System.Drawing.Point(4, 22);
             this.remoteControlTab.Name = "remoteControlTab";
-            this.remoteControlTab.Size = new System.Drawing.Size(1318, 779);
+            this.remoteControlTab.Size = new System.Drawing.Size(1318, 755);
             this.remoteControlTab.TabIndex = 2;
             this.remoteControlTab.Text = "Remote Control";
+            // 
+            // remoteControlMaster
+            // 
+            this.remoteControlMaster.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.remoteControlMaster.Location = new System.Drawing.Point(0, 0);
+            this.remoteControlMaster.Name = "remoteControlMaster";
+            this.remoteControlMaster.Size = new System.Drawing.Size(1318, 755);
+            this.remoteControlMaster.TabIndex = 0;
+            // 
+            // messageParseTab
+            // 
+            this.messageParseTab.AutoScroll = true;
+            this.messageParseTab.BackColor = System.Drawing.Color.Silver;
+            this.messageParseTab.Controls.Add(this.label4);
+            this.messageParseTab.Controls.Add(this.byteParseRTB);
+            this.messageParseTab.Controls.Add(this.byteParseDGV);
+            this.messageParseTab.Location = new System.Drawing.Point(4, 22);
+            this.messageParseTab.Name = "messageParseTab";
+            this.messageParseTab.Size = new System.Drawing.Size(1318, 755);
+            this.messageParseTab.TabIndex = 3;
+            this.messageParseTab.Text = "Message Analyser";
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(11, 4);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(257, 45);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Copy and paste the transaction bytes from the coms log to parse the message. Only" +
+    " include bytes";
+            // 
+            // byteParseRTB
+            // 
+            this.byteParseRTB.Location = new System.Drawing.Point(14, 51);
+            this.byteParseRTB.Name = "byteParseRTB";
+            this.byteParseRTB.Size = new System.Drawing.Size(254, 290);
+            this.byteParseRTB.TabIndex = 1;
+            this.byteParseRTB.Text = "80 01 01 00 00 01 01 06 02 08 3E 00 55 16 17 27 FD ";
+            this.byteParseRTB.TextChanged += new System.EventHandler(this.byteParseRTB_TextChanged);
+            // 
+            // byteParseDGV
+            // 
+            this.byteParseDGV.AllowUserToAddRows = false;
+            this.byteParseDGV.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(225)))), ((int)(((byte)(242)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(205)))), ((int)(((byte)(222)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.byteParseDGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.byteParseDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.byteParseDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.indexCol,
+            this.hexCol,
+            this.intCol,
+            this.desCol});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.byteParseDGV.DefaultCellStyle = dataGridViewCellStyle2;
+            this.byteParseDGV.Location = new System.Drawing.Point(307, 3);
+            this.byteParseDGV.Name = "byteParseDGV";
+            this.byteParseDGV.RowHeadersVisible = false;
+            this.byteParseDGV.Size = new System.Drawing.Size(453, 747);
+            this.byteParseDGV.TabIndex = 0;
+            // 
+            // indexCol
+            // 
+            this.indexCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.indexCol.HeaderText = "Index";
+            this.indexCol.Name = "indexCol";
+            this.indexCol.ReadOnly = true;
+            this.indexCol.Width = 50;
+            // 
+            // hexCol
+            // 
+            this.hexCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.hexCol.HeaderText = "Hex Value";
+            this.hexCol.Name = "hexCol";
+            this.hexCol.ReadOnly = true;
+            this.hexCol.Width = 80;
+            // 
+            // intCol
+            // 
+            this.intCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.intCol.HeaderText = "Int Value";
+            this.intCol.Name = "intCol";
+            this.intCol.ReadOnly = true;
+            this.intCol.Width = 80;
+            // 
+            // desCol
+            // 
+            this.desCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.desCol.HeaderText = "Description";
+            this.desCol.Name = "desCol";
+            this.desCol.ReadOnly = true;
             // 
             // connectedDeviceInfoTL
             // 
@@ -328,30 +461,30 @@ namespace PXR_Tool
             this.inputPasswordButton.UseVisualStyleBackColor = true;
             this.inputPasswordButton.Click += new System.EventHandler(this.inputPasswordButton_Click);
             // 
-            // rtD_Frame
+            // menuStrip1
             // 
-            this.rtD_Frame.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtD_Frame.Location = new System.Drawing.Point(3, 3);
-            this.rtD_Frame.Name = "rtD_Frame";
-            this.rtD_Frame.Size = new System.Drawing.Size(1312, 773);
-            this.rtD_Frame.TabIndex = 0;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.optionsToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1584, 24);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // setpointFrame
+            // optionsToolStripMenuItem
             // 
-            this.setpointFrame.BackColor = System.Drawing.Color.Silver;
-            this.setpointFrame.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.setpointFrame.Location = new System.Drawing.Point(3, 3);
-            this.setpointFrame.Name = "setpointFrame";
-            this.setpointFrame.Size = new System.Drawing.Size(1185, 773);
-            this.setpointFrame.TabIndex = 0;
+            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clearLogsToolStripMenuItem});
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.optionsToolStripMenuItem.Text = "Options";
             // 
-            // remoteControlMaster
+            // clearLogsToolStripMenuItem
             // 
-            this.remoteControlMaster.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.remoteControlMaster.Location = new System.Drawing.Point(0, 0);
-            this.remoteControlMaster.Name = "remoteControlMaster";
-            this.remoteControlMaster.Size = new System.Drawing.Size(1318, 779);
-            this.remoteControlMaster.TabIndex = 0;
+            this.clearLogsToolStripMenuItem.Name = "clearLogsToolStripMenuItem";
+            this.clearLogsToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.clearLogsToolStripMenuItem.Text = "Clear Logs";
+            this.clearLogsToolStripMenuItem.Click += new System.EventHandler(this.clearLogsToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -359,6 +492,7 @@ namespace PXR_Tool
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 811);
             this.Controls.Add(this.mainTL);
+            this.Controls.Add(this.menuStrip1);
             this.Name = "MainForm";
             this.Text = "PXR Tool - USB Communications";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
@@ -368,13 +502,18 @@ namespace PXR_Tool
             this.rtdTab.ResumeLayout(false);
             this.spTab.ResumeLayout(false);
             this.remoteControlTab.ResumeLayout(false);
+            this.messageParseTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.byteParseDGV)).EndInit();
             this.connectedDeviceInfoTL.ResumeLayout(false);
             this.connectedDeviceInfoTL.PerformLayout();
             this.connPanel.ResumeLayout(false);
             this.connPanel.PerformLayout();
             this.passwordGroupbox.ResumeLayout(false);
             this.passwordGroupbox.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -403,6 +542,17 @@ namespace PXR_Tool
         private System.Windows.Forms.CheckBox autoConnectCheckbox;
         private System.Windows.Forms.TabPage remoteControlTab;
         private RemoteControl.RemoteControlMaster remoteControlMaster;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clearLogsToolStripMenuItem;
+        private System.Windows.Forms.TabPage messageParseTab;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RichTextBox byteParseRTB;
+        private System.Windows.Forms.DataGridView byteParseDGV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn indexCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hexCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn intCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn desCol;
     }
 }
 

@@ -30,13 +30,13 @@ namespace PXR_Tool.RemoteControl
         private void InitializeComponent()
         {
             this.resetFunctionGroupbox = new System.Windows.Forms.GroupBox();
-            this.restEtuButton = new StasaLibrary.DataFrames.ControlButton();
+            this.resetEtuButton = new StasaLibrary.DataFrames.ControlButton();
             this.resetFunctionGroupbox.SuspendLayout();
             this.SuspendLayout();
             // 
             // resetFunctionGroupbox
             // 
-            this.resetFunctionGroupbox.Controls.Add(this.restEtuButton);
+            this.resetFunctionGroupbox.Controls.Add(this.resetEtuButton);
             this.resetFunctionGroupbox.Location = new System.Drawing.Point(3, 3);
             this.resetFunctionGroupbox.Name = "resetFunctionGroupbox";
             this.resetFunctionGroupbox.Size = new System.Drawing.Size(289, 275);
@@ -44,16 +44,17 @@ namespace PXR_Tool.RemoteControl
             this.resetFunctionGroupbox.TabStop = false;
             this.resetFunctionGroupbox.Text = "Reset Functions";
             // 
-            // restEtuButton
+            // resetEtuButton
             // 
-            this.restEtuButton.etuDevice = null;
-            this.restEtuButton.Location = new System.Drawing.Point(6, 19);
-            this.restEtuButton.Name = "restEtuButton";
-            this.restEtuButton.paramGroup = null;
-            this.restEtuButton.Size = new System.Drawing.Size(277, 53);
-            this.restEtuButton.TabIndex = 0;
-            this.restEtuButton.Text = "Reset Trip Unit";
-            this.restEtuButton.UseVisualStyleBackColor = true;
+            this.resetEtuButton.etuDevice = null;
+            this.resetEtuButton.Location = new System.Drawing.Point(6, 19);
+            this.resetEtuButton.Name = "resetEtuButton";
+            this.resetEtuButton.paramGroup = null;
+            this.resetEtuButton.requestType = StasaLibrary.DataFrames.ControlButton.RequestType.ActionCheck;
+            this.resetEtuButton.Size = new System.Drawing.Size(277, 53);
+            this.resetEtuButton.TabIndex = 0;
+            this.resetEtuButton.Text = "Reset Trip Unit";
+            this.resetEtuButton.UseVisualStyleBackColor = true;
             // 
             // RemoteControl_PD
             // 
@@ -71,6 +72,6 @@ namespace PXR_Tool.RemoteControl
         #endregion
 
         private System.Windows.Forms.GroupBox resetFunctionGroupbox;
-        private StasaLibrary.DataFrames.ControlButton restEtuButton;
+        private StasaLibrary.DataFrames.ControlButton resetEtuButton;
     }
 }

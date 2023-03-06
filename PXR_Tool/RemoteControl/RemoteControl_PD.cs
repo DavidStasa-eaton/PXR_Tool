@@ -17,8 +17,6 @@ namespace PXR_Tool.RemoteControl
         public RemoteControl_PD()
         {
             InitializeComponent();
-
-            
         }
 
         public void InitButtons()
@@ -27,8 +25,10 @@ namespace PXR_Tool.RemoteControl
             foreach (Control c in resetFunctionGroupbox.Controls)
             {
                 ((StasaLibrary.DataFrames.ControlButton)c).etuDevice = MainForm.instance.device;
-                ((StasaLibrary.DataFrames.ControlButton)c).paramGroup = di.GetRemotePG(PdDeviceInfo.RemoteControl.ResetTripUnit);
+                
             }
+
+            resetEtuButton.paramGroup = di.GetRemotePG(PdDeviceInfo.RemoteControl.ResetTripUnit);
         }
 
         private void RemoteControl_PD_Load(object sender, EventArgs e)

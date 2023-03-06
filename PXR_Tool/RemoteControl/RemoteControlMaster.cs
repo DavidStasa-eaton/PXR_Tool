@@ -15,11 +15,18 @@ namespace PXR_Tool.RemoteControl
     public partial class RemoteControlMaster : UserControl
     {
         private Control _packControl;
-        private DeviceDiscovery.DeviceType _currentType;
+        private DeviceDiscovery.DeviceType _currentType = DeviceDiscovery.DeviceType.None;
 
         public RemoteControlMaster()
         {
             InitializeComponent();
+
+            Program.DeviceChangedEvent += Program_DeviceChangedEvent;
+        }
+
+        private void Program_DeviceChangedEvent(BroadDeviceChangedEventArgs obj)
+        {
+            BindDeviceType(Program.currentBDT);
         }
 
         public void BindDeviceType(DeviceDiscovery.DeviceType dt)
