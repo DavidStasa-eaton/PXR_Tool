@@ -66,6 +66,8 @@ namespace PXR_Tool
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.siTab = new System.Windows.Forms.TabPage();
+            this.secondaryInjectionFrame1 = new PXR_Tool.SecondaryInjectionFrame();
             this.mainTL.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.rtdTab.SuspendLayout();
@@ -77,6 +79,7 @@ namespace PXR_Tool
             this.connPanel.SuspendLayout();
             this.passwordGroupbox.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.siTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTL
@@ -116,9 +119,11 @@ namespace PXR_Tool
             this.mainTabControl.Controls.Add(this.rtdTab);
             this.mainTabControl.Controls.Add(this.spTab);
             this.mainTabControl.Controls.Add(this.remoteControlTab);
+            this.mainTabControl.Controls.Add(this.siTab);
             this.mainTabControl.Controls.Add(this.messageParseTab);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.HotTrack = true;
+            this.mainTabControl.ItemSize = new System.Drawing.Size(115, 18);
             this.mainTabControl.Location = new System.Drawing.Point(255, 3);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTL.SetRowSpan(this.mainTabControl, 4);
@@ -486,6 +491,24 @@ namespace PXR_Tool
             this.clearLogsToolStripMenuItem.Text = "Clear Logs";
             this.clearLogsToolStripMenuItem.Click += new System.EventHandler(this.clearLogsToolStripMenuItem_Click);
             // 
+            // siTab
+            // 
+            this.siTab.BackColor = System.Drawing.Color.Silver;
+            this.siTab.Controls.Add(this.secondaryInjectionFrame1);
+            this.siTab.Location = new System.Drawing.Point(4, 22);
+            this.siTab.Name = "siTab";
+            this.siTab.Size = new System.Drawing.Size(1318, 755);
+            this.siTab.TabIndex = 4;
+            this.siTab.Text = "Secondary Injection";
+            // 
+            // secondaryInjectionFrame1
+            // 
+            this.secondaryInjectionFrame1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.secondaryInjectionFrame1.Location = new System.Drawing.Point(0, 0);
+            this.secondaryInjectionFrame1.Name = "secondaryInjectionFrame1";
+            this.secondaryInjectionFrame1.Size = new System.Drawing.Size(1318, 755);
+            this.secondaryInjectionFrame1.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -512,6 +535,7 @@ namespace PXR_Tool
             this.passwordGroupbox.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.siTab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -553,6 +577,8 @@ namespace PXR_Tool
         private System.Windows.Forms.DataGridViewTextBoxColumn hexCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn intCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn desCol;
+        private System.Windows.Forms.TabPage siTab;
+        private SecondaryInjectionFrame secondaryInjectionFrame1;
     }
 }
 

@@ -107,6 +107,12 @@
     <Compile Include="RTD_PGF.Designer.cs">
       <DependentUpon>RTD_PGF.cs</DependentUpon>
     </Compile>
+    <Compile Include="SecondaryInjectionFrame.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SecondaryInjectionFrame.Designer.cs">
+      <DependentUpon>SecondaryInjectionFrame.cs</DependentUpon>
+    </Compile>
     <Compile Include="SetpointFrame.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RTD_PGF.resx">
       <DependentUpon>RTD_PGF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SecondaryInjectionFrame.resx">
+      <DependentUpon>SecondaryInjectionFrame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SetpointFrame.resx">
       <DependentUpon>SetpointFrame.cs</DependentUpon>

@@ -9,5 +9,6 @@ namespace PXR_Tool.RemoteControl
     interface IRemoteControl
     {
         void InitButtons();
+        StasaLibrary.DeviceInfo deviceInfo { get; set; }
     }
 }
