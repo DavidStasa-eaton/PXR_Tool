@@ -29,8 +29,8 @@ namespace PXR_Tool
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mainTL = new System.Windows.Forms.TableLayoutPanel();
             this.comsLog = new StasaLibrary.ComsLog();
             this.mainTabControl = new System.Windows.Forms.TabControl();
@@ -38,9 +38,16 @@ namespace PXR_Tool
             this.rtD_Frame = new PXR_Tool.RTD_Frame();
             this.spTab = new System.Windows.Forms.TabPage();
             this.setpointFrame = new PXR_Tool.SetpointFrame();
+            this.configurationTab = new System.Windows.Forms.TabPage();
+            this.masterConfigurationFrame = new PXR_Tool.Configuration.MasterConfigurationFrame();
             this.remoteControlTab = new System.Windows.Forms.TabPage();
             this.remoteControlMaster = new PXR_Tool.RemoteControl.RemoteControlMaster();
+            this.siTab = new System.Windows.Forms.TabPage();
+            this.secondaryInjectionFrame1 = new PXR_Tool.SecondaryInjectionFrame();
+            this.eventsTab = new System.Windows.Forms.TabPage();
+            this.eventsFrame1 = new PXR_Tool.EventsFrame();
             this.messageParseTab = new System.Windows.Forms.TabPage();
+            this.waveformGraphDataFrame1 = new StasaLibrary.DataFrames.WaveformGraphDataFrame();
             this.label4 = new System.Windows.Forms.Label();
             this.byteParseRTB = new System.Windows.Forms.RichTextBox();
             this.byteParseDGV = new System.Windows.Forms.DataGridView();
@@ -63,23 +70,24 @@ namespace PXR_Tool
             this.setPasswordButton = new System.Windows.Forms.Button();
             this.passwordTextbox = new System.Windows.Forms.TextBox();
             this.inputPasswordButton = new System.Windows.Forms.Button();
+            this.toggleManMoButton = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.siTab = new System.Windows.Forms.TabPage();
-            this.secondaryInjectionFrame1 = new PXR_Tool.SecondaryInjectionFrame();
             this.mainTL.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.rtdTab.SuspendLayout();
             this.spTab.SuspendLayout();
+            this.configurationTab.SuspendLayout();
             this.remoteControlTab.SuspendLayout();
+            this.siTab.SuspendLayout();
+            this.eventsTab.SuspendLayout();
             this.messageParseTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.byteParseDGV)).BeginInit();
             this.connectedDeviceInfoTL.SuspendLayout();
             this.connPanel.SuspendLayout();
             this.passwordGroupbox.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.siTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTL
@@ -87,15 +95,17 @@ namespace PXR_Tool
             this.mainTL.ColumnCount = 2;
             this.mainTL.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 252F));
             this.mainTL.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainTL.Controls.Add(this.comsLog, 0, 3);
+            this.mainTL.Controls.Add(this.comsLog, 0, 4);
             this.mainTL.Controls.Add(this.mainTabControl, 1, 0);
             this.mainTL.Controls.Add(this.connectedDeviceInfoTL, 0, 1);
             this.mainTL.Controls.Add(this.connPanel, 0, 0);
-            this.mainTL.Controls.Add(this.passwordGroupbox, 0, 2);
+            this.mainTL.Controls.Add(this.passwordGroupbox, 0, 3);
+            this.mainTL.Controls.Add(this.toggleManMoButton, 0, 2);
             this.mainTL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTL.Location = new System.Drawing.Point(0, 24);
             this.mainTL.Name = "mainTL";
-            this.mainTL.RowCount = 4;
+            this.mainTL.RowCount = 5;
+            this.mainTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.mainTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.mainTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.mainTL.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
@@ -106,7 +116,7 @@ namespace PXR_Tool
             // comsLog
             // 
             this.comsLog.DetailSize = 20F;
-            this.comsLog.Location = new System.Drawing.Point(3, 153);
+            this.comsLog.Location = new System.Drawing.Point(3, 203);
             this.comsLog.MaxLength = 100000;
             this.comsLog.Name = "comsLog";
             this.comsLog.PeviousRecString = null;
@@ -118,15 +128,18 @@ namespace PXR_Tool
             // 
             this.mainTabControl.Controls.Add(this.rtdTab);
             this.mainTabControl.Controls.Add(this.spTab);
+            this.mainTabControl.Controls.Add(this.configurationTab);
             this.mainTabControl.Controls.Add(this.remoteControlTab);
             this.mainTabControl.Controls.Add(this.siTab);
+            this.mainTabControl.Controls.Add(this.eventsTab);
             this.mainTabControl.Controls.Add(this.messageParseTab);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.HotTrack = true;
             this.mainTabControl.ItemSize = new System.Drawing.Size(115, 18);
             this.mainTabControl.Location = new System.Drawing.Point(255, 3);
+            this.mainTabControl.Multiline = true;
             this.mainTabControl.Name = "mainTabControl";
-            this.mainTL.SetRowSpan(this.mainTabControl, 4);
+            this.mainTL.SetRowSpan(this.mainTabControl, 5);
             this.mainTabControl.SelectedIndex = 0;
             this.mainTabControl.Size = new System.Drawing.Size(1326, 781);
             this.mainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
@@ -171,6 +184,24 @@ namespace PXR_Tool
             this.setpointFrame.Size = new System.Drawing.Size(1312, 749);
             this.setpointFrame.TabIndex = 0;
             // 
+            // configurationTab
+            // 
+            this.configurationTab.BackColor = System.Drawing.Color.Silver;
+            this.configurationTab.Controls.Add(this.masterConfigurationFrame);
+            this.configurationTab.Location = new System.Drawing.Point(4, 22);
+            this.configurationTab.Name = "configurationTab";
+            this.configurationTab.Size = new System.Drawing.Size(1318, 755);
+            this.configurationTab.TabIndex = 6;
+            this.configurationTab.Text = "Configuration";
+            // 
+            // masterConfigurationFrame
+            // 
+            this.masterConfigurationFrame.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.masterConfigurationFrame.Location = new System.Drawing.Point(0, 0);
+            this.masterConfigurationFrame.Name = "masterConfigurationFrame";
+            this.masterConfigurationFrame.Size = new System.Drawing.Size(1318, 755);
+            this.masterConfigurationFrame.TabIndex = 0;
+            // 
             // remoteControlTab
             // 
             this.remoteControlTab.BackColor = System.Drawing.Color.Silver;
@@ -189,10 +220,47 @@ namespace PXR_Tool
             this.remoteControlMaster.Size = new System.Drawing.Size(1318, 755);
             this.remoteControlMaster.TabIndex = 0;
             // 
+            // siTab
+            // 
+            this.siTab.BackColor = System.Drawing.Color.Silver;
+            this.siTab.Controls.Add(this.secondaryInjectionFrame1);
+            this.siTab.Location = new System.Drawing.Point(4, 22);
+            this.siTab.Name = "siTab";
+            this.siTab.Size = new System.Drawing.Size(1318, 755);
+            this.siTab.TabIndex = 4;
+            this.siTab.Text = "Secondary Injection";
+            // 
+            // secondaryInjectionFrame1
+            // 
+            this.secondaryInjectionFrame1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.secondaryInjectionFrame1.Location = new System.Drawing.Point(0, 0);
+            this.secondaryInjectionFrame1.Name = "secondaryInjectionFrame1";
+            this.secondaryInjectionFrame1.Size = new System.Drawing.Size(1318, 755);
+            this.secondaryInjectionFrame1.TabIndex = 0;
+            // 
+            // eventsTab
+            // 
+            this.eventsTab.BackColor = System.Drawing.Color.Silver;
+            this.eventsTab.Controls.Add(this.eventsFrame1);
+            this.eventsTab.Location = new System.Drawing.Point(4, 22);
+            this.eventsTab.Name = "eventsTab";
+            this.eventsTab.Size = new System.Drawing.Size(1318, 755);
+            this.eventsTab.TabIndex = 5;
+            this.eventsTab.Text = "Events";
+            // 
+            // eventsFrame1
+            // 
+            this.eventsFrame1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.eventsFrame1.Location = new System.Drawing.Point(0, 0);
+            this.eventsFrame1.Name = "eventsFrame1";
+            this.eventsFrame1.Size = new System.Drawing.Size(1318, 755);
+            this.eventsFrame1.TabIndex = 0;
+            // 
             // messageParseTab
             // 
             this.messageParseTab.AutoScroll = true;
             this.messageParseTab.BackColor = System.Drawing.Color.Silver;
+            this.messageParseTab.Controls.Add(this.waveformGraphDataFrame1);
             this.messageParseTab.Controls.Add(this.label4);
             this.messageParseTab.Controls.Add(this.byteParseRTB);
             this.messageParseTab.Controls.Add(this.byteParseDGV);
@@ -201,6 +269,15 @@ namespace PXR_Tool
             this.messageParseTab.Size = new System.Drawing.Size(1318, 755);
             this.messageParseTab.TabIndex = 3;
             this.messageParseTab.Text = "Message Analyser";
+            // 
+            // waveformGraphDataFrame1
+            // 
+            this.waveformGraphDataFrame1.ButtonText = "Read";
+            this.waveformGraphDataFrame1.Location = new System.Drawing.Point(458, 29);
+            this.waveformGraphDataFrame1.Name = "waveformGraphDataFrame1";
+            this.waveformGraphDataFrame1.Size = new System.Drawing.Size(827, 365);
+            this.waveformGraphDataFrame1.TabIndex = 3;
+            this.waveformGraphDataFrame1.waveformData = null;
             // 
             // label4
             // 
@@ -224,25 +301,25 @@ namespace PXR_Tool
             // 
             this.byteParseDGV.AllowUserToAddRows = false;
             this.byteParseDGV.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(225)))), ((int)(((byte)(242)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(205)))), ((int)(((byte)(222)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.byteParseDGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(225)))), ((int)(((byte)(242)))));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(205)))), ((int)(((byte)(222)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.byteParseDGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.byteParseDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.byteParseDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.indexCol,
             this.hexCol,
             this.intCol,
             this.desCol});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.byteParseDGV.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.byteParseDGV.DefaultCellStyle = dataGridViewCellStyle6;
             this.byteParseDGV.Location = new System.Drawing.Point(307, 3);
             this.byteParseDGV.Name = "byteParseDGV";
             this.byteParseDGV.RowHeadersVisible = false;
@@ -419,7 +496,7 @@ namespace PXR_Tool
             this.passwordGroupbox.Controls.Add(this.passwordTextbox);
             this.passwordGroupbox.Controls.Add(this.inputPasswordButton);
             this.passwordGroupbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.passwordGroupbox.Location = new System.Drawing.Point(3, 103);
+            this.passwordGroupbox.Location = new System.Drawing.Point(3, 153);
             this.passwordGroupbox.Name = "passwordGroupbox";
             this.passwordGroupbox.Size = new System.Drawing.Size(246, 44);
             this.passwordGroupbox.TabIndex = 7;
@@ -466,6 +543,20 @@ namespace PXR_Tool
             this.inputPasswordButton.UseVisualStyleBackColor = true;
             this.inputPasswordButton.Click += new System.EventHandler(this.inputPasswordButton_Click);
             // 
+            // toggleManMoButton
+            // 
+            this.toggleManMoButton.BackColor = System.Drawing.Color.LightCyan;
+            this.toggleManMoButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toggleManMoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toggleManMoButton.Location = new System.Drawing.Point(6, 106);
+            this.toggleManMoButton.Margin = new System.Windows.Forms.Padding(6);
+            this.toggleManMoButton.Name = "toggleManMoButton";
+            this.toggleManMoButton.Size = new System.Drawing.Size(240, 38);
+            this.toggleManMoButton.TabIndex = 8;
+            this.toggleManMoButton.Text = "Enter Manufacturing Mode";
+            this.toggleManMoButton.UseVisualStyleBackColor = false;
+            this.toggleManMoButton.Click += new System.EventHandler(this.toggleManMoButton_Click);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -491,24 +582,6 @@ namespace PXR_Tool
             this.clearLogsToolStripMenuItem.Text = "Clear Logs";
             this.clearLogsToolStripMenuItem.Click += new System.EventHandler(this.clearLogsToolStripMenuItem_Click);
             // 
-            // siTab
-            // 
-            this.siTab.BackColor = System.Drawing.Color.Silver;
-            this.siTab.Controls.Add(this.secondaryInjectionFrame1);
-            this.siTab.Location = new System.Drawing.Point(4, 22);
-            this.siTab.Name = "siTab";
-            this.siTab.Size = new System.Drawing.Size(1318, 755);
-            this.siTab.TabIndex = 4;
-            this.siTab.Text = "Secondary Injection";
-            // 
-            // secondaryInjectionFrame1
-            // 
-            this.secondaryInjectionFrame1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.secondaryInjectionFrame1.Location = new System.Drawing.Point(0, 0);
-            this.secondaryInjectionFrame1.Name = "secondaryInjectionFrame1";
-            this.secondaryInjectionFrame1.Size = new System.Drawing.Size(1318, 755);
-            this.secondaryInjectionFrame1.TabIndex = 0;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -524,7 +597,10 @@ namespace PXR_Tool
             this.mainTabControl.ResumeLayout(false);
             this.rtdTab.ResumeLayout(false);
             this.spTab.ResumeLayout(false);
+            this.configurationTab.ResumeLayout(false);
             this.remoteControlTab.ResumeLayout(false);
+            this.siTab.ResumeLayout(false);
+            this.eventsTab.ResumeLayout(false);
             this.messageParseTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.byteParseDGV)).EndInit();
             this.connectedDeviceInfoTL.ResumeLayout(false);
@@ -535,7 +611,6 @@ namespace PXR_Tool
             this.passwordGroupbox.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.siTab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -579,6 +654,12 @@ namespace PXR_Tool
         private System.Windows.Forms.DataGridViewTextBoxColumn desCol;
         private System.Windows.Forms.TabPage siTab;
         private SecondaryInjectionFrame secondaryInjectionFrame1;
+        private StasaLibrary.DataFrames.WaveformGraphDataFrame waveformGraphDataFrame1;
+        private System.Windows.Forms.TabPage eventsTab;
+        private EventsFrame eventsFrame1;
+        private System.Windows.Forms.TabPage configurationTab;
+        private Configuration.MasterConfigurationFrame masterConfigurationFrame;
+        private System.Windows.Forms.Button toggleManMoButton;
     }
 }
 

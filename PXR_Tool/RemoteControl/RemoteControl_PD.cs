@@ -12,7 +12,7 @@ using StasaLibrary;
 
 namespace PXR_Tool.RemoteControl
 {
-    public partial class RemoteControl_PD : UserControl, IRemoteControl
+    public partial class RemoteControl_PD : UserControl, IDeviceControlFrame
     {
         public DeviceInfo deviceInfo { get; set; } = DeviceDiscovery.GetDevice(DeviceDiscovery.DeviceType.PdPxr25);
 

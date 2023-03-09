@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Drawing;
 
 using Newtonsoft.Json;
 
@@ -10,7 +11,7 @@ using StasaLibrary;
 
 namespace PXR_Tool
 {
-    
+
 
     public partial class MainForm : Form
     {
@@ -22,6 +23,10 @@ namespace PXR_Tool
 
         public string PasswordString { get { return passwordTextbox.Text; } }
         public bool AutoPassword { get { return autoPasswordCheckbox.Checked; } }
+
+        private bool _isInManMo;
+        public ParameterGroup EnterManMoPG;
+        public ParameterGroup ExitManMoPg;
 
         public MainForm()
         {
@@ -37,6 +42,28 @@ namespace PXR_Tool
             device.DisconnectEvent += Device_DisconnectEvent;
 
             connMenu.portChecker.PortStateChanged += Handle_PortStateChange;
+
+            Program.DeviceChangedEvent += Program_DeviceChangedEvent;
+        }
+
+        private void Program_DeviceChangedEvent(BroadDeviceChangedEventArgs obj)
+        {
+            toggleManMoButton.Enabled = true;
+            switch (Program.currentBDT)
+            {
+                case DeviceDiscovery.DeviceType.PdPxr20:
+                case DeviceDiscovery.DeviceType.PdPxr25:
+                    EnterManMoPG = Program.connectedDevice.manufacturingDict[(int)PdDeviceInfo.Manufacturing.EnterManufacturingMode];
+                    ExitManMoPg = Program.connectedDevice.manufacturingDict[(int)PdDeviceInfo.Manufacturing.ExitManufacturingMode];
+                    break;
+                case DeviceDiscovery.DeviceType.Tokyo:
+                    EnterManMoPG = Program.connectedDevice.testAndCalDict[(int)TokyoDeviceInfo.TestAndCal.EnterManMode];
+                    ExitManMoPg = Program.connectedDevice.testAndCalDict[(int)TokyoDeviceInfo.TestAndCal.ExitManMode];
+                    break;
+                default:
+                    toggleManMoButton.Enabled = false;
+                    break;
+            }
         }
 
         protected override void WndProc(ref Message m)
@@ -142,7 +169,7 @@ namespace PXR_Tool
             // Style
             req = connectedDevice.GetTestAndCalPG(TokyoDeviceInfo.TestAndCal.ETU_Style_Read).ActionCheckRequest();
             res = await AsyncTransaction(req);
-            
+
             if (res.goodResponse)
             {
                 connectedDevice.StyleString = res.Values[0];
@@ -155,7 +182,7 @@ namespace PXR_Tool
                 connectedDevice.ShortStyle = "?";
                 connectedDevice.StyleIndex = -1;
             }
-        
+
 
             // Frame
             req = connectedDevice.GetTestAndCalPG(TokyoDeviceInfo.TestAndCal.BreakerFrame_Read).ReadRequest();
@@ -188,7 +215,7 @@ namespace PXR_Tool
 
         private void Device_DisconnectEvent()
         {
-            
+
         }
         #endregion __Inital Reads and Connection Event__
 
@@ -326,7 +353,7 @@ namespace PXR_Tool
 
             int messageLength = stringBytes.Length;
 
-            bool isFullMessage = stringBytes[0] == "80" && stringBytes[messageLength-1] == "FD";
+            bool isFullMessage = stringBytes[0] == "80" && stringBytes[messageLength - 1] == "FD";
 
             foreach (string b in stringBytes)
             {
@@ -343,7 +370,7 @@ namespace PXR_Tool
                 {
 
                 }
-                
+
 
                 byteParseDGV.Rows[rowIndex].Cells[0].Value = rowIndex;
                 byteParseDGV.Rows[rowIndex].Cells[1].Value = $"0x{b}";
@@ -353,7 +380,7 @@ namespace PXR_Tool
                 {
                     bool isResponse = false;
 
-                    if (rowIndex == 0) 
+                    if (rowIndex == 0)
                         byteParseDGV.Rows[rowIndex].Cells[3].Value = "Start of Packet";
                     else if (rowIndex == 1)
                     {
@@ -373,8 +400,37 @@ namespace PXR_Tool
                 }
             }
         }
-    }
 
-    
+        private async void toggleManMoButton_Click(object sender, EventArgs e)
+        {
+            if (_isInManMo)
+            {
+                EtuRequest request = ExitManMoPg.ActionCheckRequest();
+                EtuResponse response = await AsyncTransaction(request);
+
+                if (response.goodResponse)
+                {
+                    _isInManMo = false;
+                    toggleManMoButton.Text = "Enter Manufacturing Mode";
+                    toggleManMoButton.BackColor = Color.LightSeaGreen;
+                    toggleManMoButton.ForeColor = Color.Black;
+                }
+            }
+            else
+            {
+                EtuRequest request = EnterManMoPG.ActionCheckRequest();
+                EtuResponse response = await AsyncTransaction(request);
+
+                if (response.goodResponse)
+                {
+                    _isInManMo = true;
+                    toggleManMoButton.Text = "Exit Manufacturing Mode";
+                    toggleManMoButton.BackColor = Color.ForestGreen;
+                    toggleManMoButton.ForeColor = Color.Wheat;
+                }
+            }
+        }
+
+    }
 
 }

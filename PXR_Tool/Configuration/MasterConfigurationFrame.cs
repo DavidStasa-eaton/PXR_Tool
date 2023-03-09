@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 using StasaLibrary;
 
-namespace PXR_Tool.RemoteControl
+namespace PXR_Tool.Configuration
 {
-    public partial class RemoteControlMaster : UserControl
+    public partial class MasterConfigurationFrame : UserControl
     {
         private Control _packControl;
         private DeviceDiscovery.DeviceType _currentType = DeviceDiscovery.DeviceType.None;
 
-        public RemoteControlMaster()
+        public MasterConfigurationFrame()
         {
             InitializeComponent();
 
@@ -39,7 +39,10 @@ namespace PXR_Tool.RemoteControl
             {
                 case DeviceDiscovery.DeviceType.PdPxr25:
                 case DeviceDiscovery.DeviceType.PdPxr20:
-                    _packControl = new RemoteControl_PD();
+                    //_packControl = new RemoteControl_PD();
+                    break;
+                case DeviceDiscovery.DeviceType.Tokyo:
+                    _packControl = new ConfigurationFrame_Tokyo();
                     break;
             }
 
