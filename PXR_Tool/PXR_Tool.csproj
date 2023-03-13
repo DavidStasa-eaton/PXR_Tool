@@ -67,6 +67,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calibration\CalFactorFrame_PD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Calibration\CalFactorFrame_PD.Designer.cs">
+      <DependentUpon>CalFactorFrame_PD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Calibration\MasterCalFactorFrame.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Calibration\MasterCalFactorFrame.Designer.cs">
+      <DependentUpon>MasterCalFactorFrame.cs</DependentUpon>
+    </Compile>
     <Compile Include="Configuration\ConfigurationFrame_Tokyo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -112,6 +124,12 @@
     <Compile Include="RemoteControl\RemoteControl_PD.Designer.cs">
       <DependentUpon>RemoteControl_PD.cs</DependentUpon>
     </Compile>
+    <Compile Include="RemoteControl\RemoteControl_Tokyo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RemoteControl\RemoteControl_Tokyo.Designer.cs">
+      <DependentUpon>RemoteControl_Tokyo.cs</DependentUpon>
+    </Compile>
     <Compile Include="RestoreInfo.cs" />
     <Compile Include="RTD_Frame.cs">
       <SubType>UserControl</SubType>
@@ -143,6 +161,12 @@
     <Compile Include="SP_PGF.Designer.cs">
       <DependentUpon>SP_PGF.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Calibration\CalFactorFrame_PD.resx">
+      <DependentUpon>CalFactorFrame_PD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calibration\MasterCalFactorFrame.resx">
+      <DependentUpon>MasterCalFactorFrame.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Configuration\ConfigurationFrame_Tokyo.resx">
       <DependentUpon>ConfigurationFrame_Tokyo.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RemoteControl\RemoteControl_PD.resx">
       <DependentUpon>RemoteControl_PD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RemoteControl\RemoteControl_Tokyo.resx">
+      <DependentUpon>RemoteControl_Tokyo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RTD_Frame.resx">
       <DependentUpon>RTD_Frame.cs</DependentUpon>

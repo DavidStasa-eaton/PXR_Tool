@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 using StasaLibrary;
 
-namespace PXR_Tool.RemoteControl
+namespace PXR_Tool.Calibration
 {
-    public partial class RemoteControlMaster : UserControl
+    public partial class MasterCalFactorFrame : UserControl
     {
         private Control _packControl;
         private DeviceDiscovery.DeviceType _currentType = DeviceDiscovery.DeviceType.None;
 
-        public RemoteControlMaster()
+        public MasterCalFactorFrame()
         {
             InitializeComponent();
 
@@ -39,10 +39,10 @@ namespace PXR_Tool.RemoteControl
             {
                 case DeviceDiscovery.DeviceType.PdPxr25:
                 case DeviceDiscovery.DeviceType.PdPxr20:
-                    _packControl = new RemoteControl_PD();
+                    _packControl = new CalFactorFrame_PD();
                     break;
                 case DeviceDiscovery.DeviceType.Tokyo:
-                    _packControl = new RemoteControl_Tokyo();
+                    //_packControl = new RemoteControl_Tokyo();
                     break;
             }
 
@@ -61,10 +61,11 @@ namespace PXR_Tool.RemoteControl
 
         private void InitPackedControl()
         {
+            
             if (_packControl == null) return;
 
             _packControl.Dock = DockStyle.Fill;
-            ((IDeviceControlFrame)_packControl).InitButtons();
+            //((IDeviceControlFrame)_packControl).InitButtons();
             Controls.Add(_packControl);
 
         }

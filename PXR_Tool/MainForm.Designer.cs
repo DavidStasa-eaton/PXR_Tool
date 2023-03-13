@@ -29,8 +29,8 @@ namespace PXR_Tool
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mainTL = new System.Windows.Forms.TableLayoutPanel();
             this.comsLog = new StasaLibrary.ComsLog();
             this.mainTabControl = new System.Windows.Forms.TabControl();
@@ -47,7 +47,6 @@ namespace PXR_Tool
             this.eventsTab = new System.Windows.Forms.TabPage();
             this.eventsFrame1 = new PXR_Tool.EventsFrame();
             this.messageParseTab = new System.Windows.Forms.TabPage();
-            this.waveformGraphDataFrame1 = new StasaLibrary.DataFrames.WaveformGraphDataFrame();
             this.label4 = new System.Windows.Forms.Label();
             this.byteParseRTB = new System.Windows.Forms.RichTextBox();
             this.byteParseDGV = new System.Windows.Forms.DataGridView();
@@ -74,6 +73,8 @@ namespace PXR_Tool
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.calFactorsTab = new System.Windows.Forms.TabPage();
+            this.masterCalFactorFrame = new PXR_Tool.Calibration.MasterCalFactorFrame();
             this.mainTL.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.rtdTab.SuspendLayout();
@@ -88,6 +89,7 @@ namespace PXR_Tool
             this.connPanel.SuspendLayout();
             this.passwordGroupbox.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.calFactorsTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTL
@@ -132,6 +134,7 @@ namespace PXR_Tool
             this.mainTabControl.Controls.Add(this.remoteControlTab);
             this.mainTabControl.Controls.Add(this.siTab);
             this.mainTabControl.Controls.Add(this.eventsTab);
+            this.mainTabControl.Controls.Add(this.calFactorsTab);
             this.mainTabControl.Controls.Add(this.messageParseTab);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.HotTrack = true;
@@ -260,7 +263,6 @@ namespace PXR_Tool
             // 
             this.messageParseTab.AutoScroll = true;
             this.messageParseTab.BackColor = System.Drawing.Color.Silver;
-            this.messageParseTab.Controls.Add(this.waveformGraphDataFrame1);
             this.messageParseTab.Controls.Add(this.label4);
             this.messageParseTab.Controls.Add(this.byteParseRTB);
             this.messageParseTab.Controls.Add(this.byteParseDGV);
@@ -269,15 +271,6 @@ namespace PXR_Tool
             this.messageParseTab.Size = new System.Drawing.Size(1318, 755);
             this.messageParseTab.TabIndex = 3;
             this.messageParseTab.Text = "Message Analyser";
-            // 
-            // waveformGraphDataFrame1
-            // 
-            this.waveformGraphDataFrame1.ButtonText = "Read";
-            this.waveformGraphDataFrame1.Location = new System.Drawing.Point(458, 29);
-            this.waveformGraphDataFrame1.Name = "waveformGraphDataFrame1";
-            this.waveformGraphDataFrame1.Size = new System.Drawing.Size(827, 365);
-            this.waveformGraphDataFrame1.TabIndex = 3;
-            this.waveformGraphDataFrame1.waveformData = null;
             // 
             // label4
             // 
@@ -301,25 +294,25 @@ namespace PXR_Tool
             // 
             this.byteParseDGV.AllowUserToAddRows = false;
             this.byteParseDGV.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(225)))), ((int)(((byte)(242)))));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(205)))), ((int)(((byte)(222)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.byteParseDGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(225)))), ((int)(((byte)(242)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(205)))), ((int)(((byte)(222)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.byteParseDGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.byteParseDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.byteParseDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.indexCol,
             this.hexCol,
             this.intCol,
             this.desCol});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.byteParseDGV.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.byteParseDGV.DefaultCellStyle = dataGridViewCellStyle2;
             this.byteParseDGV.Location = new System.Drawing.Point(307, 3);
             this.byteParseDGV.Name = "byteParseDGV";
             this.byteParseDGV.RowHeadersVisible = false;
@@ -582,6 +575,24 @@ namespace PXR_Tool
             this.clearLogsToolStripMenuItem.Text = "Clear Logs";
             this.clearLogsToolStripMenuItem.Click += new System.EventHandler(this.clearLogsToolStripMenuItem_Click);
             // 
+            // calFactorsTab
+            // 
+            this.calFactorsTab.BackColor = System.Drawing.Color.Silver;
+            this.calFactorsTab.Controls.Add(this.masterCalFactorFrame);
+            this.calFactorsTab.Location = new System.Drawing.Point(4, 22);
+            this.calFactorsTab.Name = "calFactorsTab";
+            this.calFactorsTab.Size = new System.Drawing.Size(1318, 755);
+            this.calFactorsTab.TabIndex = 7;
+            this.calFactorsTab.Text = "Calibration Factors";
+            // 
+            // masterCalFactorFrame
+            // 
+            this.masterCalFactorFrame.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.masterCalFactorFrame.Location = new System.Drawing.Point(0, 0);
+            this.masterCalFactorFrame.Name = "masterCalFactorFrame";
+            this.masterCalFactorFrame.Size = new System.Drawing.Size(1318, 755);
+            this.masterCalFactorFrame.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -611,6 +622,7 @@ namespace PXR_Tool
             this.passwordGroupbox.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.calFactorsTab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -654,12 +666,13 @@ namespace PXR_Tool
         private System.Windows.Forms.DataGridViewTextBoxColumn desCol;
         private System.Windows.Forms.TabPage siTab;
         private SecondaryInjectionFrame secondaryInjectionFrame1;
-        private StasaLibrary.DataFrames.WaveformGraphDataFrame waveformGraphDataFrame1;
         private System.Windows.Forms.TabPage eventsTab;
         private EventsFrame eventsFrame1;
         private System.Windows.Forms.TabPage configurationTab;
         private Configuration.MasterConfigurationFrame masterConfigurationFrame;
         private System.Windows.Forms.Button toggleManMoButton;
+        private System.Windows.Forms.TabPage calFactorsTab;
+        private Calibration.MasterCalFactorFrame masterCalFactorFrame;
     }
 }
 

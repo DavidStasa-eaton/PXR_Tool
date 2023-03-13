@@ -68,7 +68,7 @@ namespace PXR_Tool
             AutoHeight(s.Height + keyValuesDGV.Location.Y);
         }
 
-        private async void readButton_Click(object sender, EventArgs e)
+        protected override async void readButton_Click(object sender, EventArgs e)
         {
             if (_pGroup == null) return;
             readButton.WorkStart();

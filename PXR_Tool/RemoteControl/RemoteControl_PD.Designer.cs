@@ -346,16 +346,16 @@ namespace PXR_Tool.RemoteControl
             // 
             this.armsGroupBox.Controls.Add(this.disableArmsButton);
             this.armsGroupBox.Controls.Add(this.enableArmsButton);
-            this.armsGroupBox.Location = new System.Drawing.Point(319, 153);
+            this.armsGroupBox.Location = new System.Drawing.Point(449, 145);
             this.armsGroupBox.Name = "armsGroupBox";
-            this.armsGroupBox.Size = new System.Drawing.Size(172, 72);
+            this.armsGroupBox.Size = new System.Drawing.Size(92, 126);
             this.armsGroupBox.TabIndex = 3;
             this.armsGroupBox.TabStop = false;
             this.armsGroupBox.Text = "ARMs";
             // 
             // disableArmsButton
             // 
-            this.disableArmsButton.Location = new System.Drawing.Point(87, 19);
+            this.disableArmsButton.Location = new System.Drawing.Point(6, 65);
             this.disableArmsButton.Name = "disableArmsButton";
             this.disableArmsButton.paramGroup = null;
             this.disableArmsButton.requestType = StasaLibrary.DataFrames.ControlButton.RequestType.ActionCheck;
@@ -628,11 +628,11 @@ namespace PXR_Tool.RemoteControl
             // 
             // openBreakerButton
             // 
-            this.openBreakerButton.Location = new System.Drawing.Point(416, 231);
+            this.openBreakerButton.Location = new System.Drawing.Point(307, 141);
             this.openBreakerButton.Name = "openBreakerButton";
             this.openBreakerButton.paramGroup = null;
             this.openBreakerButton.requestType = StasaLibrary.DataFrames.ControlButton.RequestType.ActionCheck;
-            this.openBreakerButton.Size = new System.Drawing.Size(75, 40);
+            this.openBreakerButton.Size = new System.Drawing.Size(94, 80);
             this.openBreakerButton.TabIndex = 4;
             this.openBreakerButton.Text = "Open Breaker";
             this.openBreakerButton.UseVisualStyleBackColor = true;

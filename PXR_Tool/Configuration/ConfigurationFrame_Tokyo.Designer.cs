@@ -43,7 +43,7 @@ namespace PXR_Tool.Configuration
             this.etuGroupBox.Controls.Add(this.etuStyleFrame);
             this.etuGroupBox.Location = new System.Drawing.Point(3, 3);
             this.etuGroupBox.Name = "etuGroupBox";
-            this.etuGroupBox.Size = new System.Drawing.Size(271, 157);
+            this.etuGroupBox.Size = new System.Drawing.Size(286, 157);
             this.etuGroupBox.TabIndex = 0;
             this.etuGroupBox.TabStop = false;
             this.etuGroupBox.Text = "Trip Unit";
@@ -57,7 +57,7 @@ namespace PXR_Tool.Configuration
             this.etuStyleFrame.paramGroup = null;
             this.etuStyleFrame.ReadOnly = false;
             this.etuStyleFrame.requestType = StasaLibrary.DataFrames.DropDownValueFrame.RequestType.ActionCheck;
-            this.etuStyleFrame.Size = new System.Drawing.Size(253, 37);
+            this.etuStyleFrame.Size = new System.Drawing.Size(265, 40);
             this.etuStyleFrame.TabIndex = 0;
             this.etuStyleFrame.writeParamGroup = null;
             // 
@@ -75,7 +75,7 @@ namespace PXR_Tool.Configuration
             this.breakerGroupBox.Controls.Add(this.breakerRatingFrame);
             this.breakerGroupBox.Location = new System.Drawing.Point(3, 272);
             this.breakerGroupBox.Name = "breakerGroupBox";
-            this.breakerGroupBox.Size = new System.Drawing.Size(271, 160);
+            this.breakerGroupBox.Size = new System.Drawing.Size(286, 160);
             this.breakerGroupBox.TabIndex = 2;
             this.breakerGroupBox.TabStop = false;
             this.breakerGroupBox.Text = "Breaker";
@@ -89,7 +89,7 @@ namespace PXR_Tool.Configuration
             this.breakerRatingFrame.paramGroup = null;
             this.breakerRatingFrame.ReadOnly = false;
             this.breakerRatingFrame.requestType = StasaLibrary.DataFrames.DropDownValueFrame.RequestType.ActionCheck;
-            this.breakerRatingFrame.Size = new System.Drawing.Size(253, 32);
+            this.breakerRatingFrame.Size = new System.Drawing.Size(265, 40);
             this.breakerRatingFrame.TabIndex = 0;
             this.breakerRatingFrame.writeParamGroup = null;
             // 

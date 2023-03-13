@@ -41,6 +41,7 @@ namespace PXR_Tool.Configuration
                 case DeviceDiscovery.DeviceType.PdPxr20:
                     //_packControl = new RemoteControl_PD();
                     break;
+                case DeviceDiscovery.DeviceType.Pxr35:
                 case DeviceDiscovery.DeviceType.Tokyo:
                     _packControl = new ConfigurationFrame_Tokyo();
                     break;

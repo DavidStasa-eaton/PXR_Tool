@@ -77,6 +77,7 @@ namespace PXR_Tool
             this.readButton.TabIndex = 0;
             this.readButton.Text = "Read";
             this.readButton.UseVisualStyleBackColor = true;
+            this.readButton.Click += new System.EventHandler(this.readButton_Click);
             // 
             // ParameterGroupFrame
             // 

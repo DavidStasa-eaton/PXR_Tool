@@ -84,6 +84,12 @@ namespace PXR_Tool
 
         }
 
+        public virtual void UpdateParmeterGroup(ParameterGroup pg)
+        {
+            _pGroup = pg;
+            _bufferByte = (byte)_pGroup.bufferByte;
+        }
+
         /// <summary>
         /// Will return connected device if one exist. Will return PXR35 Device if in design mode. 
         /// Will Disable control if null is returned.
@@ -155,6 +161,18 @@ namespace PXR_Tool
         private void groupBox_Paint(object sender, PaintEventArgs e)
         {
             
+        }
+
+        protected virtual async void readButton_Click(object sender, EventArgs e)
+        {
+            if (_pGroup == null) return;
+            readButton.WorkStart();
+
+            EtuRequest req = _pGroup.ReadRequest();
+            EtuResponse response = await MainForm.instance.AsyncTransaction(req);
+            PostReadEvent?.Invoke(this, new PostTransactionEventArgs() { response = response });
+
+            readButton.ParseBool(response.goodResponse);
         }
     }
 
